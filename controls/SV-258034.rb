@@ -1,10 +1,11 @@
 control 'SV-258034' do
   title 'RHEL 9 must be configured to disable USB mass storage.'
-  desc 'USB mass storage permits easy introduction of unknown devices, thereby
-facilitating malicious activity.'
+  desc 'USB mass storage permits easy introduction of unknown devices, thereby facilitating malicious activity.
+
+Satisfies: SRG-OS-000114-GPOS-00059, SRG-OS-000378-GPOS-00163, SRG-OS-000480-GPOS-00227'
   desc 'check', 'Verify that RHEL 9 disables the ability to load the USB Storage kernel module with the following command:
 
-$ grep -r usb-storage /etc/modprobe.conf /etc/modprobe.d/*
+$ grep -r usb-storage /etc/modprobe.conf /etc/modprobe.d/* 
 
 install usb-storage /bin/false
 blacklist usb-storage
@@ -22,7 +23,7 @@ blacklist usb-storage'
   tag rid: 'SV-258034r1051267_rule'
   tag stig_id: 'RHEL-09-291010'
   tag fix_id: 'F-61699r1045122_fix'
-  tag cci: ['CCI-000778', 'CCI-000366', 'CCI-001958', 'CCI-003959']
+  tag cci: ['CCI-000778', 'CCI-001958', 'CCI-003959']
   tag nist: ['IA-3', 'CM-6 b', 'CM-7 (9) (b)']
   tag 'host'
 

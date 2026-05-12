@@ -58,6 +58,7 @@ $ sudo dconf update)
   tag 'documentable'
   tag cci: ['CCI-000048']
   tag nist: ['AC-8 a']
+  tag 'host'
 
   only_if('Control not applicable within a container or when GDM is not installed', impact: 0.0) do
     !virtualization.system.eql?('docker') && command('rpm -q gdm').exit_status.zero?

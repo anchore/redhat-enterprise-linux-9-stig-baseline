@@ -6,10 +6,12 @@ Remote access services, such as those providing remote access to network devices
 
 Remote access is access to DOD nonpublic information systems by an authorized user (or an information system) communicating through an external, non-organization-controlled network. Remote access methods include, for example, dial-up, broadband, and wireless.
 
-RHEL 9 functionality (e.g., RDP) must be capable of taking enforcement action if the audit reveals unauthorized activity. Automated control of remote access sessions allows organizations to ensure ongoing compliance with remote access policies by enforcing connection rules of remote access applications on a variety of information system components (e.g., servers, workstations, notebook computers, smartphones, and tablets).'
+RHEL 9 functionality (e.g., RDP) must be capable of taking enforcement action if the audit reveals unauthorized activity. Automated control of remote access sessions allows organizations to ensure ongoing compliance with remote access policies by enforcing connection rules of remote access applications on a variety of information system components (e.g., servers, workstations, notebook computers, smartphones, and tablets).
+
+Satisfies: SRG-OS-000096-GPOS-00050, SRG-OS-000297-GPOS-00115, SRG-OS-000480-GPOS-00227, SRG-OS-000480-GPOS-00232'
   desc 'check', 'Verify that "firewalld" is active with the following command:
 
-$ systemctl is-active firewalld
+$ systemctl is-active firewalld 
 
 active
 
@@ -24,8 +26,9 @@ $ sudo systemctl enable --now firewalld'
   tag rid: 'SV-257936r1044995_rule'
   tag stig_id: 'RHEL-09-251015'
   tag fix_id: 'F-61601r925794_fix'
-  tag cci: ['CCI-002314', 'CCI-000366', 'CCI-000382']
+  tag cci: ['CCI-000382', 'CCI-002314']
   tag nist: ['AC-17 (1)', 'CM-6 b', 'CM-7 b']
+  tag 'host'
 
   only_if('This requirment is Not Applicable in the container, the container management platform manages the firewall service', impact: 0.0) {
     !virtualization.system.eql?('docker')

@@ -1,9 +1,9 @@
 control 'SV-258085' do
-  title %q(RHEL 9 must use the invoking user's password for privilege escalation when using "sudo".)
+  title 'RHEL 9 must use the invoking user\'s password for privilege escalation when using "sudo".'
   desc 'If the rootpw, targetpw, or runaspw flags are defined and not disabled, by default the operating system will prompt the invoking user for the "root" user password.'
-  desc 'check', %q(Verify that the sudoers security policy is configured to use the invoking user's password for privilege escalation with the following command:
+  desc 'check', 'Verify that the sudoers security policy is configured to use the invoking user\'s password for privilege escalation with the following command:
 
-$ sudo egrep -ir '(!rootpw|!targetpw|!runaspw)' /etc/sudoers /etc/sudoers.d/ | grep -v '#'
+$ sudo egrep -ir \'(!rootpw|!targetpw|!runaspw)\' /etc/sudoers /etc/sudoers.d/ | grep -v \'#\'
 
 /etc/sudoers:Defaults !targetpw
 /etc/sudoers:Defaults !rootpw
@@ -17,7 +17,7 @@ If "Defaults !targetpw" is not defined, this is a finding.
 
 If "Defaults !rootpw" is not defined, this is a finding.
 
-If "Defaults !runaspw" is not defined, this is a finding.)
+If "Defaults !runaspw" is not defined, this is a finding.'
   desc 'fix', 'Define the following in the Defaults section of the /etc/sudoers file or a single configuration file in the /etc/sudoers.d/ directory:
 
 Defaults !targetpw
@@ -30,7 +30,7 @@ Defaults !runaspw'
   tag rid: 'SV-258085r1045173_rule'
   tag stig_id: 'RHEL-09-432020'
   tag fix_id: 'F-61750r926241_fix'
-  tag cci: ['CCI-002227', 'CCI-000366']
+  tag cci: ['CCI-000366']
   tag nist: ['AC-6 (5)', 'CM-6 b']
   tag 'host'
 

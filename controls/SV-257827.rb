@@ -1,6 +1,8 @@
 control 'SV-257827' do
   title 'RHEL 9 must not have the sendmail package installed.'
-  desc 'The sendmail software was not developed with security in mind, and its design prevents it from being effectively contained by SELinux. Postfix must be used instead.'
+  desc 'The sendmail software was not developed with security in mind, and its design prevents it from being effectively contained by SELinux. Postfix must be used instead.
+
+Satisfies: SRG-OS-000480-GPOS-00227, SRG-OS-000095-GPOS-00049'
   desc 'check', 'Verify that the sendmail package is not installed with the following command:
 
 $ dnf list --installed sendmail
@@ -18,7 +20,7 @@ $ sudo dnf remove sendmail'
   tag rid: 'SV-257827r1044892_rule'
   tag stig_id: 'RHEL-09-215020'
   tag fix_id: 'F-61492r925467_fix'
-  tag cci: ['CCI-000381', 'CCI-000366']
+  tag cci: ['CCI-000381']
   tag nist: ['CM-7 a', 'CM-6 b']
   tag 'host'
   tag 'container'

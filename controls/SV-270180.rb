@@ -51,6 +51,8 @@ permissive = 0'
   tag 'documentable'
   tag cci: ['CCI-001764']
   tag nist: ['CM-7 (2)']
+  tag 'host'
+  tag 'container'
 
   describe file('/etc/fapolicyd/fapolicyd.conf') do
     its('content') { should include 'permissive = 0' }

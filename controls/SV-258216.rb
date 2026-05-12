@@ -1,6 +1,8 @@
 control 'SV-258216' do
   title 'Successful/unsuccessful uses of the umount2 system call in RHEL 9 must generate an audit record.'
-  desc 'The changing of file permissions could indicate that a user is attempting to gain access to information that would otherwise be disallowed. Auditing DAC modifications can facilitate the identification of patterns of abuse among both authorized and unauthorized users.'
+  desc 'The changing of file permissions could indicate that a user is attempting to gain access to information that would otherwise be disallowed. Auditing DAC modifications can facilitate the identification of patterns of abuse among both authorized and unauthorized users.
+
+Satisfies: SRG-OS-000037-GPOS-00015, SRG-OS-000062-GPOS-00031, SRG-OS-000392-GPOS-00172, SRG-OS-000462-GPOS-00206, SRG-OS-000471-GPOS-00215'
   desc 'check', 'To determine if the system is configured to audit calls to the umount2 system call, run the following command:
 
 $ sudo auditctl -l | grep umount2
@@ -18,10 +20,10 @@ To load the rules to the kernel immediately, use the following command:
 
 $ sudo augenrules --load'
   impact 0.5
-  tag check_id: 'C-61957r1045431_chk'
+  tag check_id: 'C-61957r1155612_chk'
   tag severity: 'medium'
   tag gid: 'V-258216'
-  tag rid: 'SV-258216r1045433_rule'
+  tag rid: 'SV-258216r1155613_rule'
   tag stig_id: 'RHEL-09-654210'
   tag gtitle: 'SRG-OS-000037-GPOS-00015'
   tag fix_id: 'F-61881r1045432_fix'

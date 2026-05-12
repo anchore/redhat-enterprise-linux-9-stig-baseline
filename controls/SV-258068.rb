@@ -1,13 +1,15 @@
 control 'SV-258068' do
   title 'RHEL 9 must automatically exit interactive command shell user sessions after 10 minutes of inactivity.'
-  desc 'Terminating an idle interactive command shell user session within a short time period reduces the window of opportunity for unauthorized personnel to take control of it when left unattended in a virtual terminal or physical console.'
-  desc 'check', %q(Verify RHEL 9 is configured to exit interactive command shell user sessions after 10 minutes of inactivity or less with the following command:
+  desc 'Terminating an idle interactive command shell user session within a short time period reduces the window of opportunity for unauthorized personnel to take control of it when left unattended in a virtual terminal or physical console.
+
+Satisfies: SRG-OS-000163-GPOS-00072, SRG-OS-000029-GPOS-00010'
+  desc 'check', 'Verify RHEL 9 is configured to exit interactive command shell user sessions after 10 minutes of inactivity or less with the following command:
 
 $ sudo grep -i tmout /etc/profile /etc/profile.d/*.sh
 
 /etc/profile.d/tmout.sh:declare -xr TMOUT=600
 
-If "TMOUT" is not set to "600" or less in a script located in the "/etc/'profile.d/ directory, is missing or is commented out, this is a finding.)
+If "TMOUT" is not set to "600" or less in a script located in the "/etc/\'profile.d/ directory, is missing or is commented out, this is a finding.'
   desc 'fix', 'Configure RHEL 9 to exit interactive command shell user sessions after 10 minutes of inactivity.
 
 Add or edit the following line in "/etc/profile.d/tmout.sh":
@@ -19,7 +21,7 @@ declare -xr TMOUT=600'
   tag check_id: 'C-61809r1014870_chk'
   tag severity: 'medium'
   tag gid: 'V-258068'
-  tag rid: 'SV-258068r1069388_rule'
+  tag rid: 'SV-258068r1101950_rule'
   tag stig_id: 'RHEL-09-412035'
   tag gtitle: 'SRG-OS-000163-GPOS-00072'
   tag fix_id: 'F-61733r1014871_fix'

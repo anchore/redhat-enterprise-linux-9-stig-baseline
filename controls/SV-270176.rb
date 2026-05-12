@@ -15,13 +15,15 @@ $ sudo chgrp root /etc/audit/'
   tag check_id: 'C-74209r1044965_chk'
   tag severity: 'medium'
   tag gid: 'V-270176'
-  tag rid: 'SV-270176r1044967_rule'
+  tag rid: 'SV-270176r1137691_rule'
   tag stig_id: 'RHEL-09-232104'
   tag gtitle: 'SRG-OS-000080-GPOS-00048'
   tag fix_id: 'F-74110r1044966_fix'
   tag 'documentable'
   tag cci: ['CCI-000162']
   tag nist: ['AU-9 a']
+  tag 'host'
+  tag 'container'
 
   describe file('/etc/audit/') do
     it { should exist }

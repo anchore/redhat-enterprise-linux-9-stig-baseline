@@ -15,13 +15,15 @@ $ sudo chown root /etc/audit/'
   tag check_id: 'C-74208r1044962_chk'
   tag severity: 'medium'
   tag gid: 'V-270175'
-  tag rid: 'SV-270175r1044964_rule'
+  tag rid: 'SV-270175r1137691_rule'
   tag stig_id: 'RHEL-09-232103'
   tag gtitle: 'SRG-OS-000080-GPOS-00048'
   tag fix_id: 'F-74109r1044963_fix'
   tag 'documentable'
   tag cci: ['CCI-000162']
   tag nist: ['AU-9 a']
+  tag 'host'
+  tag 'container'
 
   describe file('/etc/audit/') do
     it { should exist }

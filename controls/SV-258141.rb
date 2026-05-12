@@ -1,6 +1,8 @@
 control 'SV-258141' do
   title 'RHEL 9 must have the packages required for encrypting offloaded audit logs installed.'
-  desc 'The rsyslog-gnutls package provides Transport Layer Security (TLS) support for the rsyslog daemon, which enables secure remote logging.'
+  desc 'The rsyslog-gnutls package provides Transport Layer Security (TLS) support for the rsyslog daemon, which enables secure remote logging.
+
+Satisfies: SRG-OS-000480-GPOS-00227, SRG-OS-000120-GPOS-00061'
   desc 'check', 'Verify that RHEL 9 has the rsyslog-gnutls package installed with the following command:
 
 $ dnf list --installed rsyslog-gnutls
@@ -11,7 +13,7 @@ rsyslog-gnutls.x86_64          8.2102.0-101.el9_0.1
 
 If the "rsyslog-gnutls" package is not installed, this is a finding.'
   desc 'fix', 'The  rsyslog-gnutls package can be installed with the following command:
-
+ 
 $ sudo dnf install rsyslog-gnutls'
   impact 0.5
   tag severity: 'medium'
@@ -20,7 +22,7 @@ $ sudo dnf install rsyslog-gnutls'
   tag rid: 'SV-258141r1045280_rule'
   tag stig_id: 'RHEL-09-652015'
   tag fix_id: 'F-61806r926409_fix'
-  tag cci: ['CCI-000366', 'CCI-000803']
+  tag cci: ['CCI-000803']
   tag nist: ['CM-6 b', 'IA-7']
   tag 'host'
 

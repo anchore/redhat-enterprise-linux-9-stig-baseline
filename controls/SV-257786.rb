@@ -1,12 +1,8 @@
 control 'SV-257786' do
   title 'RHEL 9 debug-shell systemd service must be disabled.'
-  desc 'The debug-shell requires no authentication and provides root
-privileges to anyone who has physical access to the machine.  While this
-feature is disabled by default, masking it adds an additional layer of
-assurance that it will not be enabled via a dependency in systemd.  This also
-prevents attackers with physical access from trivially bypassing security on
-the machine through valid troubleshooting configurations and gaining root
-access when the system is rebooted.'
+  desc 'The debug-shell requires no authentication and provides root privileges to anyone who has physical access to the machine. While this feature is disabled by default, masking it adds an additional layer of assurance that it will not be enabled via a dependency in systemd. This also prevents attackers with physical access from trivially bypassing security on the machine through valid troubleshooting configurations and gaining root access when the system is rebooted.
+
+Satisfies: SRG-OS-000324-GPOS-00125, SRG-OS-000480-GPOS-00227'
   desc 'check', 'Verify RHEL 9 is configured to mask the debug-shell systemd service with the following command:
 
 $ sudo systemctl status debug-shell.service
@@ -27,7 +23,7 @@ $ sudo systemctl mask --now debug-shell.service'
   tag rid: 'SV-257786r1044834_rule'
   tag stig_id: 'RHEL-09-211055'
   tag fix_id: 'F-61451r943025_fix'
-  tag cci: ['CCI-000366', 'CCI-002235']
+  tag cci: ['CCI-002235']
   tag nist: ['CM-6 b', 'AC-6 (10)']
   tag 'host'
 
