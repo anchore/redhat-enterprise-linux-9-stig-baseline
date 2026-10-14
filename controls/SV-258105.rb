@@ -28,7 +28,8 @@ $ sudo passwd -n 1 [user]'
   # TODO: add inputs for a frequecny
 
   bad_users = users.where { uid >= 1000 }.where { mindays < 1 }.usernames
-  in_scope_users = bad_users - input('exempt_home_users')
+  # DISA counts only accounts that are not system accounts, such as nobody
+  in_scope_users = bad_users - input('exempt_home_users') - input('known_system_accounts')
 
   describe 'Users should not' do
     it 'be able to change their password more then once a 24 hour period' do
