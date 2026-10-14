@@ -35,11 +35,12 @@ retry = 3'
   tag 'host'
 
   only_if('This control is Not Applicable for containers', impact: 0.0) do
-    !%w[docker podman kubepods lxc].include?(virtualization.system)
+    !virtualization.container_system?
   end
 
   describe 'System pwquality setting' do
     subject { parse_config(command('grep -rh retry /etc/security/pwquality.conf*').stdout.strip) }
-    its('retry') { should cmp >= input('min_retry') }
+    its('retry') { should cmp > 0 }
+    its('retry') { should cmp <= input('min_retry') }
   end
 end
