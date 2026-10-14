@@ -26,7 +26,7 @@ The audit daemon must be restarted for the changes to take effect.'
   tag 'host'
 
   only_if('This control is Not Applicable to containers', impact: 0.0) {
-    !virtualization.container_system?
+    !%w[docker podman kubepods lxc].include?(virtualization.system)
   }
   describe command('grep -i immutable /etc/audit/audit.rules') do
     its('stdout.strip') { should cmp '--loginuid-immutable' }

@@ -21,7 +21,7 @@ If the "/var/tmp" file system is mounted without the "noexec" option, this is a 
   tag 'host'
 
   only_if('This control is Not Applicable to containers', impact: 0.0) {
-    !virtualization.container_system?
+    !%w[docker podman kubepods lxc].include?(virtualization.system)
   }
 
   path = '/var/tmp'

@@ -49,7 +49,7 @@ $ sudo systemctl restart rsyslog.service'
   tag 'container'
 
   only_if('This control is Not Applicable to containers', impact: 0.0) {
-    !virtualization.container_system?
+    !%w[docker podman kubepods lxc].include?(virtualization.system)
   }
 
   if input('is_log_aggregation_server') == true
@@ -57,31 +57,36 @@ $ sudo systemctl restart rsyslog.service'
     describe 'N/A' do
       skip 'This control is NA because the system is a log aggregation server.'
     end
-  elsif input('alternative_logging_method') != ''
-    impact 0.0
-    describe 'N/A' do
-      skip 'The system is using an approved alternative logging method; this control is Not Applicable.'
-    end
   else
-    rsyslog_config_files = input('logging_conf_files').join(' ')
-    active_rsyslog_config = command("grep -hsv '^[[:space:]]*#' #{rsyslog_config_files}").stdout
-    remote_modules = active_rsyslog_config.scan(/(?:^\s*[$]ModLoad\s+im(?:tcp|udp|relp)\b|module\s*\((?=[^)]*\bload\s*=\s*"im(?:tcp|udp|relp)")[^)]*\))/im)
-    legacy_serverrun = active_rsyslog_config.lines.grep(/(?:\A\s*[$])?(?:InputTCPServerRun|UDPServerRun|RELPServerRun)\b/i)
-    remote_inputs = active_rsyslog_config.scan(/input\s*\((?=[^)]*\btype\s*=\s*"im(?:tcp|udp|relp)")[^)]*\)/im)
+    modload = command('grep -i modload /etc/rsyslog.conf /etc/rsyslog.d/*').stdout.strip
+    imtcp = command(%q(grep -i 'load="imtcp"' /etc/rsyslog.conf /etc/rsyslog.d/*)).stdout.strip
+    imrelp = command(%q(grep -i 'load="imrelp"' /etc/rsyslog.conf /etc/rsyslog.d/*)).stdout.strip
+    serverrun = command('grep -i serverrun /etc/rsyslog.conf /etc/rsyslog.d/*').stdout.strip
+    ports = command(%q(grep -i 'port="\S*"' /etc/rsyslog.conf /etc/rsyslog.d/*)).stdout.strip
 
-    describe 'remote rsyslog input modules' do
+    describe 'modload' do
       it 'is not configured to receive remote logs' do
-        expect(remote_modules).to be_empty, "Remote rsyslog input module settings found:\n#{remote_modules.join}"
+        expect(modload).to be_empty, "modload settings found:\n#{modload}"
       end
     end
-    describe 'legacy rsyslog listener configuration' do
+    describe 'imtcp' do
       it 'is not configured to receive remote logs' do
-        expect(legacy_serverrun).to be_empty, "Legacy rsyslog listener settings found:\n#{legacy_serverrun.join}"
+        expect(imtcp).to be_empty, "imtcp settings found:\n#{imtcp}"
       end
     end
-    describe 'RainerScript rsyslog listener configuration' do
+    describe 'imrelp' do
       it 'is not configured to receive remote logs' do
-        expect(remote_inputs).to be_empty, "RainerScript rsyslog listener settings found:\n#{remote_inputs.join}"
+        expect(imrelp).to be_empty, "imrelp settings found:\n#{imrelp}"
+      end
+    end
+    describe 'serverrun config' do
+      it 'is not configured to receive remote logs' do
+        expect(serverrun).to be_empty, "serverrun settings found:\n#{serverrun}"
+      end
+    end
+    describe 'ports' do
+      it 'are not configured to receive remote logs' do
+        expect(ports).to be_empty, "port settings found:\n#{ports}"
       end
     end
   end

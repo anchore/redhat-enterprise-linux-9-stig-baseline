@@ -44,21 +44,13 @@ $ sudo systemctl mask --now kdump'
   tag 'host'
 
   only_if('This control is Not Applicable to containers', impact: 0.0) {
-    !virtualization.container_system?
+    !%w[docker podman kubepods lxc].include?(virtualization.system)
   }
 
-  kdump = service('kdump')
-
-  if kdump.installed?
-    describe kdump do
-      it { should_not be_enabled }
-      it { should_not be_running }
-      its('params.LoadState') { should cmp 'masked' }
-      its('params.UnitFileState') { should cmp 'masked' }
-    end
-  else
-    describe kdump do
-      it { should_not be_installed }
-    end
+  describe service('kdump') do
+    it { should_not be_enabled }
+    it { should_not be_running }
+    its('params.LoadState') { should cmp 'masked' }
+    its('params.UnitFileState') { should cmp 'masked' }
   end
 end

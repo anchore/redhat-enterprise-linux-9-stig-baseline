@@ -37,7 +37,7 @@ If a package was not used to install the SELinux policy for a given device class
   tag 'host'
 
   only_if('This control is Not Applicable to containers', impact: 0.0) {
-    !virtualization.container_system?
+    !%w[docker podman kubepods lxc].include?(virtualization.system)
   }
 
   exempt_from_device_file_checks = input('exempt_from_device_file_checks')
