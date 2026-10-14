@@ -37,25 +37,11 @@ $ sudo systemctl daemon-reload'
   tag 'host'
 
   only_if('This control is Not Applicable to containers', impact: 0.0) {
-    !virtualization.container_system?
+    !%w[docker podman kubepods lxc].include?(virtualization.system)
   }
 
-  setting = 'CtrlAltDelBurstAction'
-  expected_value = 'none'
-  effective_value = command("systemctl show --property=#{setting} --value").stdout.strip.downcase
-  configured_values = command('systemd-analyze cat-config systemd/system.conf 2>/dev/null').stdout.lines.filter_map do |line|
-    line.match(/^\s*#{setting}\s*=\s*(?<value>\S+)/i)&.[](:value)&.downcase
-  end
-  configured_value = configured_values.last
-
-  describe 'Ctrl-Alt-Delete burst action' do
-    it "sets #{setting} to #{expected_value}" do
-      expect(effective_value).to eq(expected_value), "#{setting} is set to '#{effective_value}' instead of '#{expected_value}'"
-    end
-  end
-
-  describe 'Persisted Ctrl-Alt-Delete burst action configuration' do
-    subject { configured_value }
-    it { should eq expected_value }
+  describe command('grep -iR CtrlAltDelBurstAction /etc/systemd/system*') do
+    its('exit_status') { should eq 0 }
+    its('stdout') { should match(/^[[:space:]]*CtrlAltDelBurstAction[[:space:]]*=[[:space:]]*none/i) }
   end
 end

@@ -42,13 +42,12 @@ $ sudo sysctl --system'
   tag 'host'
 
   only_if('Control not applicable within a container', impact: 0.0) {
-    !virtualization.container_system?
+    !%w[docker podman kubepods lxc].include?(virtualization.system)
   }
 
   parameter = 'net.ipv4.conf.all.rp_filter'
   value = 1
-  regexp = /^\s*-?#{Regexp.escape(parameter)}\s*=\s*#{value}\s*$/
-  exclusion_regexp = /^\s*-#{Regexp.escape(parameter)}\s*$/
+  regexp = /^\s*#{parameter}\s*=\s*#{value}\s*$/
 
   if input('ipv4_enabled') == false
     impact 0.0
@@ -63,14 +62,16 @@ $ sudo sysctl --system'
     search_results = command("/usr/lib/systemd/systemd-sysctl --cat-config | egrep -v '^(#|;)' | grep -F #{parameter}").stdout.strip.split("\n")
 
     correct_result = search_results.any? { |line| line.match(regexp) }
-    incorrect_results = search_results.map(&:strip).reject { |line| line.match(regexp) || line.match(exclusion_regexp) }
+    incorrect_results = search_results.map(&:strip).reject { |line| line.match(regexp) }
 
     describe 'Kernel config files' do
       it "should configure '#{parameter}'" do
         expect(correct_result).to eq(true), 'No config file was found that correctly sets this action'
       end
-      it 'should not have incorrect or conflicting setting(s) in the config files' do
-        expect(incorrect_results).to be_empty, "Incorrect or conflicting setting(s) found:\n\t- #{incorrect_results.join("\n\t- ")}"
+      unless incorrect_results.nil?
+        it 'should not have incorrect or conflicting setting(s) in the config files' do
+          expect(incorrect_results).to be_empty, "Incorrect or conflicting setting(s) found:\n\t- #{incorrect_results.join("\n\t- ")}"
+        end
       end
     end
   end
