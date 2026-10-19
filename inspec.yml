@@ -242,12 +242,6 @@ inputs:
     type: Boolean
     value: false
 
-  # SV-258241
-  - name: system_wide_crypto_policy
-    description: The system wide crypto policy
-    type: String
-    value: 'FIPS'
-
   # SV-258091
   - name: min_retry
     description: Number of permitted password retries
@@ -547,12 +541,6 @@ inputs:
     type: Numeric
     value: 0
 
-  # SV-258066
-  - name: system_activity_timeout
-    description: The expected maximum delay in seconds before the system will lock the session
-    type: Numeric
-    value: 600
-
   # SV-258060
   - name: log_directory
     description: Documented tally log directory
@@ -564,18 +552,6 @@ inputs:
     description: all network connections associated with SSH traffic are terminated at the end of the session or after 10 minutes of inactivity
     type: Numeric
     value: 1
-
-  # SV-257780
-  - name: linux_threat_prevention_package
-    description: Endpoint Security Linux Threat Prevention Tool Package
-    type: String
-    value: mcafeetp
-
-  # SV-257780
-  - name: linux_threat_prevention_service
-    description: Endpoint Security Linux Threat Prevention Tool Service
-    type: String
-    value: mfetpd
 
   # SV-257837
   - name: remove_xorg_x11_server_packages
@@ -768,14 +744,6 @@ inputs:
       nodev: false
       nosuid: false
       noexec: false
-      
-  - name: mount_var_options
-    description: rhel_09_231140 - RHEL 9 must mount /var with the (nodev|nosuid|noexec) option.
-    type: Hash
-    value:
-      nodev: true
-      nosuid: true
-      noexec: true
 
   # SV-258080
   - name: non_default_tally_dir
@@ -1039,14 +1007,6 @@ inputs:
     value:
       ciphers: aes256-gcm@openssh.com,aes256-ctr,aes128-gcm@openssh.com,aes128-ctr
       macs: hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,umac-128@openssh.com,hmac-sha2-512
-
-  # SV-257989
-  - name: approved_openssh_client_conf
-    description: Config values expected for openssh client (order matters, so these values are comma-delimited strings and not arrays)
-    type: Hash
-    value:
-      ciphers: aes256-gcm@openssh.com,chacha20-poly1305@openssh.com,aes256-ctr,aes128-gcm@openssh.com,aes128-ctr
-      macs: hmac-sha2-256-etm@openssh.com,hmac-sha2-256,hmac-sha2-512-etm@openssh.com,hmac-sha2-512
 
   # SV-258099, SV-258100 
   - name: password_hash_rounds
