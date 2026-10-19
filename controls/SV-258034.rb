@@ -15,6 +15,7 @@ If the command does not return any output, or either line is commented out, and 
 install usb-storage /bin/false
 blacklist usb-storage'
   impact 0.5
+  tag check_id: 'C-61775r1051266_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000114-GPOS-00059'
   tag satisfies: ['SRG-OS-000114-GPOS-00059', 'SRG-OS-000378-GPOS-00163', 'SRG-OS-000480-GPOS-00227']
@@ -22,8 +23,8 @@ blacklist usb-storage'
   tag rid: 'SV-258034r1051267_rule'
   tag stig_id: 'RHEL-09-291010'
   tag fix_id: 'F-61699r1045122_fix'
-  tag cci: ['CCI-000778', 'CCI-000366', 'CCI-001958', 'CCI-003959']
-  tag nist: ['IA-3', 'CM-6 b', 'CM-7 (9) (b)']
+  tag cci: ['CCI-000778', 'CCI-001958', 'CCI-003959']
+  tag nist: ['IA-3', 'CM-7 (9) (b)']
   tag 'host'
 
   only_if('This control is Not Applicable to containers', impact: 0.0) {

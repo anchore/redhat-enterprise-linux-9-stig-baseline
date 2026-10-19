@@ -20,10 +20,11 @@ Use the following command to apply the changes immediately without a reboot:
 
 $ sudo mount -o remount /dev/shm'
   impact 0.5
+  tag check_id: 'C-61606r1184296_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000368-GPOS-00154'
   tag gid: 'V-257865'
-  tag rid: 'SV-257865r1155636_rule'
+  tag rid: 'SV-257865r1184297_rule'
   tag stig_id: 'RHEL-09-231120'
   tag fix_id: 'F-61530r1155635_fix'
   tag cci: ['CCI-001764']

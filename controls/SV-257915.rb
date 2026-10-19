@@ -14,6 +14,7 @@ If "/var/log" does not have a group owner of "root", this is a finding.'
 
 $ sudo chgrp root /var/log'
   impact 0.5
+  tag check_id: 'C-61656r1044970_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000206-GPOS-00084'
   tag gid: 'V-257915'

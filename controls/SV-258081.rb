@@ -26,14 +26,16 @@ If the "policycoreutils" package is not installed, this is a finding.'
 
 $ sudo dnf install policycoreutils'
   impact 0.5
+  tag check_id: 'C-61822r1045163_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
+  tag satisfies: ['SRG-OS-000480-GPOS-00227', 'SRG-OS-000134-GPOS-00068']
   tag gid: 'V-258081'
-  tag rid: 'SV-258081r1045164_rule'
+  tag rid: 'SV-258081r1268251_rule'
   tag stig_id: 'RHEL-09-431025'
   tag fix_id: 'F-61746r926229_fix'
-  tag cci: ['CCI-001084', 'CCI-000366']
-  tag nist: ['SC-3', 'CM-6 b']
+  tag cci: ['CCI-001084']
+  tag nist: ['SC-3']
   tag 'host'
 
   only_if('Control not applicable within a container', impact: 0.0) do

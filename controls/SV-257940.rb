@@ -16,6 +16,7 @@ Then run the following command to load the newly created rule(s):
 
 $ sudo firewall-cmd --reload"
   impact 0.5
+  tag check_id: 'C-61681r1106311_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000096-GPOS-00050'
   tag gid: 'V-257940'

@@ -18,6 +18,7 @@ disk_full_action = HALT
 
 If availability has been determined to be more important, and this decision is documented with the information system security officer (ISSO), configure the operating system to notify SA staff and ISSO staff in the event of an audit processing failure by setting the "disk_full_action" to "SYSLOG".'
   impact 0.5
+  tag check_id: 'C-61895r926447_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000047-GPOS-00023'
   tag gid: 'V-258154'

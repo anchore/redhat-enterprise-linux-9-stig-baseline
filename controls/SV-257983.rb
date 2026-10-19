@@ -1,6 +1,6 @@
 control 'SV-257983' do
   title 'RHEL 9 SSHD must accept public key authentication.'
-  desc 'Without the use of multifactor authentication, the ease of access to privileged functions is greatly increased. Multifactor authentication requires using two or more factors to achieve authentication. A privileged account is defined as an information system account with authorizations of a privileged user. A DOD common access card (CAC) with DOD-approved PKI is an example of multifactor authentication.'
+  desc 'Without the use of multifactor authentication, the ease of access to privileged functions is greatly increased. Multifactor authentication requires using two or more factors to achieve authentication. A privileged account is defined as an information system account with authorizations of a privileged user. A DoW common access card (CAC) with DoW-approved PKI is an example of multifactor authentication.'
   desc 'check', %q(Note: If the system administrator demonstrates the use of an approved alternate multifactor authentication method, this requirement is Not Applicable.
 
 Verify that RHEL 9 SSH daemon accepts public key encryption with the following command:
@@ -21,7 +21,7 @@ $ sudo systemctl restart sshd.service'
   tag check_id: 'C-61724r1045022_chk'
   tag severity: 'medium'
   tag gid: 'V-257983'
-  tag rid: 'SV-257983r1045024_rule'
+  tag rid: 'SV-257983r1268228_rule'
   tag stig_id: 'RHEL-09-255035'
   tag gtitle: 'SRG-OS-000105-GPOS-00052'
   tag fix_id: 'F-61648r1045023_fix'

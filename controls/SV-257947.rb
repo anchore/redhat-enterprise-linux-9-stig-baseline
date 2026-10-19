@@ -12,8 +12,10 @@ If the "cmdport" option is not set to "0", is commented out, or is missing, this
 
 cmdport 0'
   impact 0.3
+  tag check_id: 'C-61688r925826_chk'
   tag severity: 'low'
   tag gtitle: 'SRG-OS-000096-GPOS-00050'
+  tag satisfies: ['SRG-OS-000096-GPOS-00050', 'SRG-OS-000095-GPOS-00049']
   tag gid: 'V-257947'
   tag rid: 'SV-257947r958480_rule'
   tag stig_id: 'RHEL-09-252030'

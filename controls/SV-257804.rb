@@ -14,6 +14,7 @@ If the command does not return any output, or the line is commented out, and use
 install atm /bin/false
 blacklist atm'
   impact 0.5
+  tag check_id: 'C-61545r1044852_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000095-GPOS-00049'
   tag gid: 'V-257804'

@@ -3,7 +3,7 @@ control 'SV-258072' do
   desc 'The umask controls the default access mode assigned to newly created files. A umask of 077 limits new files to mode 600 or less permissive. Although umask can be represented as a four-digit number, the first digit representing special access modes is typically ignored or required to be "0". This requirement applies to the globally configured system defaults and the local interactive user defaults for each account on the system.'
   desc 'check', 'Verify the "umask" setting is configured correctly in the "/etc/bashrc" file with the following command:
 
-Note: If the value of the "umask" parameter is set to "000" "/etc/bashrc" file, the Severity is raised to a CAT I.
+Note: If the value of the "umask" parameter is set to "000" in the "/etc/bashrc" file, the Severity is raised to a CAT I.
 
 $ grep umask /etc/bashrc
 
@@ -16,10 +16,10 @@ Add or edit the lines for the "umask" parameter in the "/etc/bashrc" file to "07
 
 umask 077'
   impact 0.5
-  tag check_id: 'C-61813r1045154_chk'
+  tag check_id: 'C-61813r1184319_chk'
   tag severity: 'medium'
   tag gid: 'V-258072'
-  tag rid: 'SV-258072r1045155_rule'
+  tag rid: 'SV-258072r1184320_rule'
   tag stig_id: 'RHEL-09-412055'
   tag gtitle: 'SRG-OS-000480-GPOS-00228'
   tag fix_id: 'F-61737r926202_fix'

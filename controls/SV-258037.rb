@@ -8,7 +8,7 @@ Audit records can be generated from various components within the information sy
 
 The list of audited events is the set of events for which audits are to be generated. This set of events is typically a subset of the list of all events for which the system is capable of generating audit records.
 
-DOD has defined the list of events for which RHEL 9 will provide an audit record generation capability as the following:
+DoW has defined the list of events for which RHEL 9 will provide an audit record generation capability as the following:
 
 1) Successful and unsuccessful attempts to access, modify, or delete privileges, security objects, security levels, or categories of information (e.g., classification levels);
 
@@ -32,11 +32,11 @@ Add or edit the following line in /etc/usbguard/usbguard-daemon.conf
 
 AuditBackend=LinuxAudit'
   impact 0.3
+  tag check_id: 'C-61778r1014862_chk'
   tag severity: 'low'
   tag gtitle: 'SRG-OS-000062-GPOS-00031'
-  tag satisfies: ['SRG-OS-000062-GPOS-00031', 'SRG-OS-000471-GPOS-00215']
   tag gid: 'V-258037'
-  tag rid: 'SV-258037r1014863_rule'
+  tag rid: 'SV-258037r1268225_rule'
   tag stig_id: 'RHEL-09-291025'
   tag fix_id: 'F-61702r926097_fix'
   tag cci: ['CCI-000169']

@@ -24,9 +24,9 @@ $ sudo chgrp root [audit_tool]
 
 Replace "[audit_tool]" with each audit tool not group-owned by "root".'
   impact 0.5
+  tag check_id: 'C-61666r925760_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000256-GPOS-00097'
-  tag satisfies: ['SRG-OS-000256-GPOS-00097', 'SRG-OS-000257-GPOS-00098', 'SRG-OS-000258-GPOS-00099']
   tag gid: 'V-257925'
   tag rid: 'SV-257925r991557_rule'
   tag stig_id: 'RHEL-09-232225'

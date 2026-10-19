@@ -12,6 +12,7 @@ If the value of the "space_left" keyword is not set to 25 percent or greater of 
 
 space_left  = 25%'
   impact 0.5
+  tag check_id: 'C-61897r1106363_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000343-GPOS-00134'
   tag gid: 'V-258156'

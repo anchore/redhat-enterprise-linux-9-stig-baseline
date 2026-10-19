@@ -9,31 +9,34 @@ reduced because the user will be prompted before any action is taken.'
   desc 'check', 'Verify RHEL 9 is configured to not reboot the system when Ctrl-Alt-Delete is pressed seven times within two seconds with the following command:
 
 $ sudo grep -iR CtrlAltDelBurstAction /etc/systemd/system*
-/etc/systemd/system.conf.d/55-CtrlAltDel-BurstAction:CtrlAltDelBurstAction=none
+/etc/systemd/system.conf.d/55-CtrlAltDel-BurstAction.conf:CtrlAltDelBurstAction=none
 
-If the "CtrlAltDelBurstAction" is not set to "none", commented out, or is missing, this is a finding.'
+If the "CtrlAltDelBurstAction" is not set to "none", is commented out, or is missing, this is a finding.'
   desc 'fix', 'Configure RHEL 9 to disable the CtrlAltDelBurstAction by adding it to a drop file in a "/etc/systemd/system.conf.d/" configuration file:
 
 If no drop file exists, create one with the following command:
 
-$ sudo mkdir -p /etc/systemd/system.conf.d && sudo vi /etc/systemd/system.conf.d/55-CtrlAltDel-BurstAction
+$ sudo mkdir -p /etc/systemd/system.conf.d && sudo vi /etc/systemd/system.conf.d/55-CtrlAltDel-BurstAction.conf
 
 Edit the file to contain the setting by adding the following text:
 
+[Manager]
 CtrlAltDelBurstAction=none
 
 Reload the daemon for this change to take effect.
 
 $ sudo systemctl daemon-reload'
   impact 0.7
+  tag check_id: 'C-61525r1208765_chk'
   tag severity: 'high'
   tag gtitle: 'SRG-OS-000324-GPOS-00125'
+  tag satisfies: ['SRG-OS-000324-GPOS-00125', 'SRG-OS-000480-GPOS-00227']
   tag gid: 'V-257784'
-  tag rid: 'SV-257784r1155651_rule'
+  tag rid: 'SV-257784r1262100_rule'
   tag stig_id: 'RHEL-09-211045'
-  tag fix_id: 'F-61449r1155650_fix'
-  tag cci: ['CCI-000366', 'CCI-002235']
-  tag nist: ['CM-6 b', 'AC-6 (10)']
+  tag fix_id: 'F-61449r1261987_fix'
+  tag cci: ['CCI-002235']
+  tag nist: ['AC-6 (10)']
   tag 'host'
 
   only_if('This control is Not Applicable to containers', impact: 0.0) {

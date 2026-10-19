@@ -1,7 +1,9 @@
 control 'SV-257825' do
   title 'RHEL 9 subscription-manager package must be installed.'
   desc 'The Red Hat Subscription Manager application manages software subscriptions and software repositories for installed software products on the local system. It communicates with backend servers, such as the Red Hat Customer Portal or an on-premise instance of Subscription Asset Manager, to register the local system and grant access to software resources determined by the subscription entitlement.'
-  desc 'check', 'Verify that RHEL 9 subscription-manager package is installed with the following command:
+  desc 'check', 'Note: If the system is not an internet connected system, this requirement is not applicable.
+
+Verify that RHEL 9 subscription-manager package is installed with the following command:
 
 $ dnf list --installed subscription-manager
 
@@ -14,10 +16,10 @@ If the "subscription-manager" package is not installed, this is a finding.'
 
 $ sudo dnf install subscription-manager'
   impact 0.5
-  tag check_id: 'C-61566r1044887_chk'
+  tag check_id: 'C-61566r1184290_chk'
   tag severity: 'medium'
   tag gid: 'V-257825'
-  tag rid: 'SV-257825r1044888_rule'
+  tag rid: 'SV-257825r1268241_rule'
   tag stig_id: 'RHEL-09-215010'
   tag gtitle: 'SRG-OS-000366-GPOS-00153'
   tag fix_id: 'F-61490r925461_fix'

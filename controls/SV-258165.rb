@@ -30,6 +30,7 @@ Change the ownership to that group:
 
 $ sudo chgrp ${GROUP} /var/log/audit)
   impact 0.5
+  tag check_id: 'C-61906r926480_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000057-GPOS-00027'
   tag satisfies: ['SRG-OS-000057-GPOS-00027', 'SRG-OS-000058-GPOS-00028', 'SRG-OS-000059-GPOS-00029', 'SRG-OS-000206-GPOS-00084']

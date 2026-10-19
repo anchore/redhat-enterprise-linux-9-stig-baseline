@@ -28,8 +28,10 @@ action_mail_acct = root
 
 The audit daemon must be restarted for changes to take effect.'
   impact 0.5
+  tag check_id: 'C-61904r926474_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000046-GPOS-00022'
+  tag satisfies: ['SRG-OS-000046-GPOS-00022', 'SRG-OS-000343-GPOS-00134']
   tag gid: 'V-258163'
   tag rid: 'SV-258163r958424_rule'
   tag stig_id: 'RHEL-09-653070'

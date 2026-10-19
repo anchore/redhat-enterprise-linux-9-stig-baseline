@@ -14,10 +14,11 @@ If the "rng-tools" package is not installed, this is a finding.'
 
 $ sudo dnf install rng-tools'
   impact 0.5
+  tag check_id: 'C-61582r1044913_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
   tag gid: 'V-257841'
-  tag rid: 'SV-257841r1044914_rule'
+  tag rid: 'SV-257841r1268251_rule'
   tag stig_id: 'RHEL-09-215090'
   tag fix_id: 'F-61506r925509_fix'
   tag cci: ['CCI-000366']

@@ -22,6 +22,7 @@ $ sudo useradd -D -f 35
 
 The recommendation is 35 days, but a lower value is acceptable.'
   impact 0.5
+  tag check_id: 'C-61790r926132_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000118-GPOS-00060'
   tag gid: 'V-258049'

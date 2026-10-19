@@ -23,6 +23,7 @@ If the password prompt is not displayed, and the contents of the key are display
 
 $ sudo ssh-keygen -N [passphrase]'
   impact 0.5
+  tag check_id: 'C-61868r1134924_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000067-GPOS-00035'
   tag gid: 'V-258127'

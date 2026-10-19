@@ -11,11 +11,13 @@ RHEL 9 ships with many optional packages. One such package is a file access poli
 Proceed with caution with enforcing the use of this daemon. Improper configuration may render the system nonfunctional. The "fapolicyd" API is not namespace aware and can cause issues when launching or running containers.'
   desc 'check', 'Verify the RHEL 9 "fapolicyd" employs a deny-all, permit-by-exception policy.
 
-Check that "fapolicyd" is in enforcement mode with the following command:
+Verify "fapolicyd" is in enforcement mode with the following command:
 
 $ sudo grep permissive /etc/fapolicyd/fapolicyd.conf
 
 permissive = 0
+
+If "fapolicyd" is not running in enforcement mode, this is a finding.
 
 Check that "fapolicyd" employs a deny-all policy on system mounts with the following commands:
 
@@ -25,26 +27,28 @@ allow exe=/usr/bin/python3.7 : ftype=text/x-python
 deny_audit perm=any pattern=ld_so : all
 deny perm=any all : all
 
-If "fapolicyd" is not running in enforcement mode with a deny-all, permit-by-exception policy, this is a finding.'
+If "fapolicyd" is not running with a deny-all, permit-by-exception policy, this is a finding.
+
+Note: "deny_log" or "deny_audit" options meet the security requirements.  These options will generate higher volumes of logs.'
   desc 'fix', 'Configure RHEL 9 to employ a deny-all, permit-by-exception application allow listing policy with "fapolicyd".
 
 With the "fapolicyd" installed and enabled, configure the daemon to function in permissive mode until the allow list is built correctly to avoid system lockout. Do this by editing the "/etc/fapolicyd/fapolicyd.conf" file with the following line:
 
 permissive = 1
 
-Build the allow list in a file within the "/etc/fapolicyd/rules.d" directory, ensuring the last rule is "deny perm=any all : all".
+Build the allow list in a file within the "/etc/fapolicyd/rules.d" directory, ensuring the last rule implements a deny-all policy, such as "deny perm=any all : all".
 
 Once it is determined the allow list is built correctly, set the "fapolicyd" to enforcing mode by editing the "permissive" line in the /etc/fapolicyd/fapolicyd.conf file.
 
 permissive = 0'
   impact 0.5
-  tag check_id: 'C-74213r1045180_chk'
+  tag check_id: 'C-74213r1184325_chk'
   tag severity: 'medium'
   tag gid: 'V-270180'
-  tag rid: 'SV-270180r1045182_rule'
+  tag rid: 'SV-270180r1184327_rule'
   tag stig_id: 'RHEL-09-433016'
   tag gtitle: 'SRG-OS-000368-GPOS-00154'
-  tag fix_id: 'F-74114r1045181_fix'
+  tag fix_id: 'F-74114r1184326_fix'
   tag satisfies: ['SRG-OS-000368-GPOS-00154', 'SRG-OS-000370-GPOS-00155', 'SRG-OS-000480-GPOS-00232']
   tag 'documentable'
   tag cci: ['CCI-001764']

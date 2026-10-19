@@ -23,10 +23,11 @@ If there are unauthorized local user accounts on the system, this is a finding.'
 
 $ sudo userdel  <unauthorized_user>'
   impact 0.5
+  tag check_id: 'C-61799r1045147_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
   tag gid: 'V-258058'
-  tag rid: 'SV-258058r1045148_rule'
+  tag rid: 'SV-258058r1268251_rule'
   tag stig_id: 'RHEL-09-411095'
   tag fix_id: 'F-61723r926160_fix'
   tag cci: ['CCI-000366']

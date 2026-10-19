@@ -32,8 +32,10 @@ If there is no evidence of integrity protection, this is a finding.'
 /usr/sbin/autrace p+i+n+u+g+s+b+acl+xattrs+sha512
 /usr/sbin/augenrules p+i+n+u+g+s+b+acl+xattrs+sha512'
   impact 0.5
+  tag check_id: 'C-61878r1102080_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000256-GPOS-00097'
+  tag satisfies: ['SRG-OS-000256-GPOS-00097', 'SRG-OS-000257-GPOS-00098', 'SRG-OS-000258-GPOS-00099', 'SRG-OS-000278-GPOS-00108']
   tag gid: 'V-258137'
   tag rid: 'SV-258137r1102081_rule'
   tag stig_id: 'RHEL-09-651025'

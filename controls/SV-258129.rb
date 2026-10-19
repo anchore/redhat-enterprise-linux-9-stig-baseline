@@ -1,6 +1,6 @@
 control 'SV-258129' do
   title 'RHEL 9 must require authentication to access single-user mode.'
-  desc 'To mitigate the risk of unauthorized access to sensitive information by entities that have been issued certificates by DOD-approved PKIs, all DOD systems (e.g., web servers and web portals) must be properly configured to incorporate access control methods that do not rely solely on the possession of a certificate for access. Successful authentication must not automatically give an entity access to an asset or security boundary. Authorization procedures and controls must be implemented to ensure each authenticated entity also has a validated and current authorization. Authorization is the process of determining whether an entity, once authenticated, is permitted to access a specific asset. Information systems use access control policies and enforcement mechanisms to implement this requirement.
+  desc 'To mitigate the risk of unauthorized access to sensitive information by entities that have been issued certificates by DoW-approved PKIs, all DoW systems (e.g., web servers and web portals) must be properly configured to incorporate access control methods that do not rely solely on the possession of a certificate for access. Successful authentication must not automatically give an entity access to an asset or security boundary. Authorization procedures and controls must be implemented to ensure each authenticated entity also has a validated and current authorization. Authorization is the process of determining whether an entity, once authenticated, is permitted to access a specific asset. Information systems use access control policies and enforcement mechanisms to implement this requirement.
 
 This requirement prevents attackers with physical access from trivially bypassing security on the machine and gaining root access. Such accesses are further prevented by configuring the bootloader password.
 
@@ -23,29 +23,30 @@ Note: The configuration setting can only be in either the default location, or i
   desc 'fix', 'Configure RHEL 9 to require authentication for single-user mode.
 
 Create a directory for supplementary configuration files:
+
 $ sudo mkdir /etc/systemd/system/rescue.service.d/
 
-Copy the original file rescue.service file to the new directory with:
-$ sudo cp  /usr/lib/systemd/system/rescue.service  /etc/systemd/system/rescue.service.d/rescue.service.conf
+Create a new file:
 
-Open the new file:
 $ sudo vi etc/systemd/system/rescue.service.d/rescue.service.conf
 
-Add this line to the new file:
+Add these lines to the new file:
+
+[Service]
+ExecStart=
 ExecStart=-/usr/lib/systemd/systemd-sulogin-shell rescue
 
-Comment out or remove the ExecStart and ExecStartPre lines in /usr/lib/systemd/system/rescue.service as they can only exist in one location.
-
 Apply changes to unit files without rebooting the system:
+
 $ sudo systemctl daemon-reload'
   impact 0.5
-  tag check_id: 'C-61870r1106457_chk'
+  tag check_id: 'C-61870r1262032_chk'
   tag severity: 'medium'
   tag gid: 'V-258129'
-  tag rid: 'SV-258129r1155628_rule'
+  tag rid: 'SV-258129r1268226_rule'
   tag stig_id: 'RHEL-09-611200'
   tag gtitle: 'SRG-OS-000080-GPOS-00048'
-  tag fix_id: 'F-61794r1155627_fix'
+  tag fix_id: 'F-61794r1262033_fix'
   tag 'documentable'
   tag cci: ['CCI-000213']
   tag nist: ['AC-3']

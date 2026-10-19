@@ -24,14 +24,15 @@ Defaults !targetpw
 Defaults !rootpw
 Defaults !runaspw'
   impact 0.5
+  tag check_id: 'C-61826r1045172_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
   tag gid: 'V-258085'
-  tag rid: 'SV-258085r1045173_rule'
+  tag rid: 'SV-258085r1268251_rule'
   tag stig_id: 'RHEL-09-432020'
   tag fix_id: 'F-61750r926241_fix'
-  tag cci: ['CCI-002227', 'CCI-000366']
-  tag nist: ['AC-6 (5)', 'CM-6 b']
+  tag cci: ['CCI-000366']
+  tag nist: ['CM-6 b']
   tag 'host'
 
   only_if('This control is Not Applicable to containers without sudo installed', impact: 0.0) {

@@ -11,10 +11,11 @@ Note: Options displayed for mount may differ.
 If a separate entry for "/var" is not in use, this is a finding.'
   desc 'fix', 'Migrate the "/var" path onto a separate file system.'
   impact 0.3
+  tag check_id: 'C-61586r1044919_chk'
   tag severity: 'low'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
   tag gid: 'V-257845'
-  tag rid: 'SV-257845r1044920_rule'
+  tag rid: 'SV-257845r1268251_rule'
   tag stig_id: 'RHEL-09-231020'
   tag fix_id: 'F-61510r925521_fix'
   tag cci: ['CCI-000366']

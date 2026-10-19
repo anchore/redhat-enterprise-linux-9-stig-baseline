@@ -22,10 +22,11 @@ Add the following line to the top of the /etc/security/limits.conf or in a singl
 
 Remove or comment out any entries for users or groups with a value set to anything other than "0".'
   impact 0.5
+  tag check_id: 'C-61555r1156056_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
   tag gid: 'V-257814'
-  tag rid: 'SV-257814r1156057_rule'
+  tag rid: 'SV-257814r1268251_rule'
   tag stig_id: 'RHEL-09-213095'
   tag fix_id: 'F-61479r1155592_fix'
   tag cci: ['CCI-000366']

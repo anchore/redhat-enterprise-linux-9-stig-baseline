@@ -16,14 +16,16 @@ local_events = yes
 
 The audit daemon must be restarted for the changes to take effect.'
   impact 0.5
+  tag check_id: 'C-61905r926477_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000062-GPOS-00031'
+  tag satisfies: ['SRG-OS-000062-GPOS-00031', 'SRG-OS-000480-GPOS-00227']
   tag gid: 'V-258164'
-  tag rid: 'SV-258164r1045301_rule'
+  tag rid: 'SV-258164r1268225_rule'
   tag stig_id: 'RHEL-09-653075'
   tag fix_id: 'F-61829r926478_fix'
-  tag cci: ['CCI-000366', 'CCI-000169']
-  tag nist: ['CM-6 b', 'AU-12 a']
+  tag cci: ['CCI-000169']
+  tag nist: ['AU-12 a']
   tag 'host'
 
   only_if('This control is Not Applicable to containers', impact: 0.0) {

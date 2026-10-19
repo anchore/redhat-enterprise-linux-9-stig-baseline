@@ -15,10 +15,11 @@ by the ISSO and documented.
 
     $ sudo ip link set dev <devicename> multicast off promisc off'
   impact 0.5
+  tag check_id: 'C-61682r925808_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
   tag gid: 'V-257941'
-  tag rid: 'SV-257941r991589_rule'
+  tag rid: 'SV-257941r1268251_rule'
   tag stig_id: 'RHEL-09-251040'
   tag fix_id: 'F-61606r925809_fix'
   tag cci: ['CCI-000366']

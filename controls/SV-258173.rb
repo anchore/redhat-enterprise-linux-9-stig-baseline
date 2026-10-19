@@ -24,8 +24,10 @@ If the command returns any outputs, and audit_backlog_limit is less than "8192",
 
 $ sudo grubby --update-kernel=ALL --args=audit_backlog_limit=8192'
   impact 0.3
+  tag check_id: 'C-61914r1101932_chk'
   tag severity: 'low'
   tag gtitle: 'SRG-OS-000254-GPOS-00095'
+  tag satisfies: ['SRG-OS-000254-GPOS-00095', 'SRG-OS-000341-GPOS-00132']
   tag gid: 'V-258173'
   tag rid: 'SV-258173r1101933_rule'
   tag stig_id: 'RHEL-09-653120'

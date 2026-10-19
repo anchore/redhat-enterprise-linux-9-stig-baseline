@@ -1,39 +1,24 @@
 control 'SV-258230' do
   title 'RHEL 9 must enable FIPS mode.'
-  desc 'Use of weak or untested encryption algorithms undermines the purposes of utilizing encryption to protect data. The operating system must implement cryptographic modules adhering to the higher standards approved by the federal government since this provides assurance they have been tested and validated. This includes NIST FIPS-validated cryptography for the following: Provisioning digital signatures, generating cryptographic hashes, and to protect data requiring data-at-rest protections in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, and standards.'
+  desc 'Use of weak or untested encryption algorithms undermines the purposes of using encryption to protect data. The operating system must implement cryptographic modules adhering to the higher standards approved by the federal government because this provides assurance they have been tested and validated.'
   desc 'check', 'Verify RHEL 9 is in FIPS mode with the following command:
 
-$ sudo fips-mode-setup --check
-FIPS mode is enabled.
+$ cat /proc/sys/crypto/fips_enabled
+1
 
-If FIPS mode is not enabled, this is a finding.
+If the command does not return "1", this is a finding.'
+  desc 'fix', 'Configure RHEL 9 to implement FIPS mode.
 
-If any other lines are returned by the above command, run the following command to see the currently applied crypto-policy:
-
-$ update-crypto-policies --show
-FIPS
-
-If the policy is not "FIPS" or a FIPS policy authorized by and documented with the ISSO, this is a finding.'
-  desc 'fix', 'Configure the operating system to implement FIPS mode with the following command
-
-$ sudo fips-mode-setup --enable
-
-To ensure the kernel enables FIPS mode for early boot, "fips=1" must be added to the grub config:
-$ sudo grubby --update-kernel=ALL --args="fips=1"
-
-Verify the setting with the following command:
-$ cat /proc/cmdline
-BOOT_IMAGE=(hd0,gpt2)/vmlinuz-5.14.0-570.21.1.el9_6.x86_64 root=/dev/mapper/rhel-root ro resume=/dev/mapper/rhel-swap rd.luks.uuid=luks-cd37eb8d-a2c3-4671-96ee-1e6a3a681561 rd.lvm.lv=rhel/root rd.lvm.lv=rhel/swap rhgb quiet fips=1 boot=UUID=acbbb4ee-adc0-4cb2-9546-afab857b8849 audit_backlog_limit=8192 crashkernel=1G-4G:192M,4G-64G:256M,64G-:512M
-
-Reboot the system for the changes to take effect.'
+If this check fails on an installed system, it is a permanent finding until the system is reinstalled with "fips=1" during installation.'
   impact 0.7
+  tag check_id: 'C-61971r1184332_chk'
   tag severity: 'high'
   tag gtitle: 'SRG-OS-000033-GPOS-00014'
-  tag satisfies: ['SRG-OS-000033-GPOS-00014', 'SRG-OS-000125-GPOS-00065', 'SRG-OS-000396-GPOS-00176', 'SRG-OS-000423-GPOS-00187', 'SRG-OS-000478-GPOS-00223']
+  tag satisfies: ['SRG-OS-000033-GPOS-00014', 'SRG-OS-000125-GPOS-00065', 'SRG-OS-000250-GPOS-00093', 'SRG-OS-000393-GPOS-00173', 'SRG-OS-000394-GPOS-00174', 'SRG-OS-000396-GPOS-00176', 'SRG-OS-000423-GPOS-00187', 'SRG-OS-000478-GPOS-00223']
   tag gid: 'V-258230'
-  tag rid: 'SV-258230r1155585_rule'
+  tag rid: 'SV-258230r1268222_rule'
   tag stig_id: 'RHEL-09-671010'
-  tag fix_id: 'F-61895r1155584_fix'
+  tag fix_id: 'F-61895r1184333_fix'
   tag cci: ['CCI-000068', 'CCI-000877', 'CCI-002418', 'CCI-002450']
   tag nist: ['AC-17 (2)', 'MA-4 c', 'SC-8', 'SC-13 b']
   tag 'host'

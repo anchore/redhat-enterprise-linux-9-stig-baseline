@@ -5,26 +5,27 @@ control 'SV-257822' do
 All software packages must be signed with a cryptographic key recognized and approved by the organization.
 
 Verifying the authenticity of software prior to installation validates the integrity of the software package received from a vendor. This verifies the software has not been tampered with and that it has been provided by a trusted vendor.'
-  desc 'check', 'Verify all software repositories defined in "/etc/yum.repos.d/" have been configured with "gpgcheck" enabled:
+  desc 'check', 'Verify RHEL 9 software repositories defined in "/etc/yum.repos.d/" have been configured with "gpgcheck" enabled with the following command:
 
-$ grep -w gpgcheck /etc/yum.repos.d/*.repo | more
+$ sudo grep -w gpgcheck /etc/yum.repos.d/*.repo | more
+gpgcheck = 1
 
-/etc/yum.repos.d/redhat.repo:gpgcheck = 1
+If "gpgcheck" for software packages and repositories is not set to either "1", "true", or "yes" (keywords containing letters are case insensitive), or if the option is missing or commented out, ask the system administrator how the GPG signatures of local software packages are being verified.
 
-For all listed repos, if "gpgcheck" is not set to "1", or if the option is missing or commented out, ask the system administrator how the GPG signatures of local software packages are being verified.
+If no process to verify GPG signatures has been approved by the organization, this is a finding.'
+  desc 'fix', %q(Configure RHEL 9 software repositories defined in "/etc/yum.repos.d/" to have "gpgcheck" enabled with the following command:
 
-If there is no process to verify GPG signatures that is approved by the organization, this is a finding.'
-  desc 'fix', %q(Configure all software repositories defined in "/etc/yum.repos.d/" to have "gpgcheck" enabled:
+$ sudo sed -i 's/gpgcheck\\s*=.*/gpgcheck=1/g' /etc/yum.repos.d/*
 
-$ sudo sed -i 's/gpgcheck\s*=.*/gpgcheck=1/g' /etc/yum.repos.d/*)
+Note: Any of the following are acceptable: "1", "true", or "yes" (keywords containing letters are case insensitive).)
   impact 0.7
-  tag check_id: 'C-61563r1155614_chk'
+  tag check_id: 'C-61563r1286927_chk'
   tag severity: 'high'
   tag gid: 'V-257822'
-  tag rid: 'SV-257822r1155615_rule'
+  tag rid: 'SV-257822r1286929_rule'
   tag stig_id: 'RHEL-09-214025'
   tag gtitle: 'SRG-OS-000366-GPOS-00153'
-  tag fix_id: 'F-61487r925452_fix'
+  tag fix_id: 'F-61487r1286928_fix'
   tag 'documentable'
   tag cci: ['CCI-001749', 'CCI-003992']
   tag nist: ['CM-5 (3)', 'CM-14']

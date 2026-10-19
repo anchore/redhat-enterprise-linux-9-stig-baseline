@@ -19,6 +19,7 @@ Restart the SSH daemon  for the setting to take effect:
 
 $ sudo systemctl restart sshd.service'
   impact 0.5
+  tag check_id: 'C-61734r952191_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000480-GPOS-00229'
   tag gid: 'V-257993'

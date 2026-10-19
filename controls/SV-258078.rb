@@ -36,8 +36,10 @@ Edit the file "/etc/selinux/config" and add or modify the following line:
 
 A reboot is required for the changes to take effect.'
   impact 0.7
+  tag check_id: 'C-61819r926219_chk'
   tag severity: 'high'
   tag gtitle: 'SRG-OS-000445-GPOS-00199'
+  tag satisfies: ['SRG-OS-000445-GPOS-00199', 'SRG-OS-000134-GPOS-00068']
   tag gid: 'V-258078'
   tag rid: 'SV-258078r958944_rule'
   tag stig_id: 'RHEL-09-431010'

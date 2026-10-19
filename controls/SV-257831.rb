@@ -16,6 +16,7 @@ If the "telnet-server" package is installed, this is a finding.'
 
 $ sudo dnf remove telnet-server'
   impact 0.5
+  tag check_id: 'C-61572r1044897_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000095-GPOS-00049'
   tag gid: 'V-257831'

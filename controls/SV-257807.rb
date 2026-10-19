@@ -25,6 +25,7 @@ If the command does not return any output, or the lines are commented out, and u
 install sctp /bin/false
 blacklist sctp'
   impact 0.5
+  tag check_id: 'C-61548r1044860_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000095-GPOS-00049'
   tag gid: 'V-257807'

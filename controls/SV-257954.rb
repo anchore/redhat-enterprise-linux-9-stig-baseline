@@ -21,14 +21,14 @@ $ sudo dnf install libreswan'
   tag check_id: 'C-61695r1101930_chk'
   tag severity: 'medium'
   tag gid: 'V-257954'
-  tag rid: 'SV-257954r1106315_rule'
+  tag rid: 'SV-257954r1268251_rule'
   tag stig_id: 'RHEL-09-252065'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
   tag fix_id: 'F-61619r925848_fix'
   tag satisfies: ['SRG-OS-000480-GPOS-00227', 'SRG-OS-000120-GPOS-00061']
   tag 'documentable'
-  tag cci: ['CCI-000366', 'CCI-000803']
-  tag nist: ['CM-6 b', 'IA-7']
+  tag cci: ['CCI-000803']
+  tag nist: ['IA-7']
   tag 'host'
   tag 'container'
 

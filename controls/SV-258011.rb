@@ -18,10 +18,11 @@ The SSH service must be restarted for changes to take effect:
 
 $ sudo systemctl restart sshd.service'
   impact 0.5
+  tag check_id: 'C-61752r952217_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
   tag gid: 'V-258011'
-  tag rid: 'SV-258011r1045079_rule'
+  tag rid: 'SV-258011r1268251_rule'
   tag stig_id: 'RHEL-09-255175'
   tag fix_id: 'F-61676r1045078_fix'
   tag cci: ['CCI-000366']

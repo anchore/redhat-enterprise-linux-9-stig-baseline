@@ -27,9 +27,9 @@ Update the system databases:
 
 $ sudo dconf update'
   impact 0.5
+  tag check_id: 'C-61766r926060_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000029-GPOS-00010'
-  tag satisfies: ['SRG-OS-000029-GPOS-00010', 'SRG-OS-000031-GPOS-00012', 'SRG-OS-000480-GPOS-00227']
   tag gid: 'V-258025'
   tag rid: 'SV-258025r958402_rule'
   tag stig_id: 'RHEL-09-271075'

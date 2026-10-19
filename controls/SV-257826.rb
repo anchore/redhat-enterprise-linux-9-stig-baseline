@@ -7,23 +7,23 @@ Removing the "vsftpd" package decreases the risk of accidental activation.
 If FTP is required for operational support (such as transmission of router configurations), its use must be documented with the information systems security manager (ISSM), restricted to only authorized personnel, and have access control rules established.'
   desc 'check', 'Verify RHEL 9 does not have an FTP server package installed with the following command:
 
-$ sudo dnf list --installed vsftpd
+$ sudo dnf list --installed | grep vsftpd
 
-Error: No matching Packages to list
-
-If the "ftp" package is installed, this is a finding.'
-  desc 'fix', 'The ftp package can be removed with the following command (using vsftpd as an example):
+If the "vsftpd" package is installed, this is a finding.'
+  desc 'fix', 'Remove the vsftpd package with the following command:
 
 $ sudo dnf remove vsftpd'
   impact 0.7
+  tag check_id: 'C-61567r1208477_chk'
   tag severity: 'high'
   tag gtitle: 'SRG-OS-000074-GPOS-00042'
+  tag satisfies: ['SRG-OS-000074-GPOS-00042', 'SRG-OS-000095-GPOS-00049', 'SRG-OS-000480-GPOS-00227']
   tag gid: 'V-257826'
-  tag rid: 'SV-257826r1106299_rule'
+  tag rid: 'SV-257826r1208770_rule'
   tag stig_id: 'RHEL-09-215015'
-  tag fix_id: 'F-61491r925464_fix'
-  tag cci: ['CCI-000366', 'CCI-000197', 'CCI-000381']
-  tag nist: ['CM-6 b', 'IA-5 (1) (c)', 'CM-7 a']
+  tag fix_id: 'F-61491r1208478_fix'
+  tag cci: ['CCI-000197', 'CCI-000381']
+  tag nist: ['IA-5 (1) (c)', 'CM-7 a']
   tag 'host'
   tag 'container'
 

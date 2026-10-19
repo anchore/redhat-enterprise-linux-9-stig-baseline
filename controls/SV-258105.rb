@@ -14,6 +14,7 @@ If any results are returned that are not associated with a system account, this 
 
 $ sudo passwd -n 1 [user]'
   impact 0.5
+  tag check_id: 'C-61846r1045211_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000075-GPOS-00043'
   tag gid: 'V-258105'

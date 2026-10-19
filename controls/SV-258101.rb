@@ -27,8 +27,8 @@ enforce_for_root'
   tag fix_id: 'F-61766r1045203_fix'
   tag satisfies: ['SRG-OS-000072-GPOS-00040', 'SRG-OS-000071-GPOS-00039', 'SRG-OS-000070-GPOS-00038', 'SRG-OS-000266-GPOS-00101', 'SRG-OS-000078-GPOS-00046', 'SRG-OS-000480-GPOS-00225', 'SRG-OS-000069-GPOS-00037']
   tag 'documentable'
-  tag cci: ['CCI-000192', 'CCI-000193', 'CCI-000194', 'CCI-000195', 'CCI-000205', 'CCI-000366', 'CCI-001619', 'CCI-004066']
-  tag nist: ['IA-5 (1) (a)', 'IA-5 (1) (b)', 'CM-6 b', 'IA-5 (1) (h)']
+  tag cci: ['CCI-004066', 'CCI-000192', 'CCI-000193', 'CCI-000194', 'CCI-000195', 'CCI-000205', 'CCI-001619']
+  tag nist: ['IA-5 (1) (h)', 'IA-5 (1) (a)', 'IA-5 (1) (b)']
   tag 'host'
   tag 'container'
 

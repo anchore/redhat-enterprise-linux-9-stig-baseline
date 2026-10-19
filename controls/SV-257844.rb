@@ -10,10 +10,11 @@ $ mount | grep /tmp
 If a separate entry for "/tmp" is not in use, this is a finding.'
   desc 'fix', 'Migrate the "/tmp" path onto a separate file system.'
   impact 0.5
+  tag check_id: 'C-61585r1044917_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
   tag gid: 'V-257844'
-  tag rid: 'SV-257844r1044918_rule'
+  tag rid: 'SV-257844r1268251_rule'
   tag stig_id: 'RHEL-09-231015'
   tag fix_id: 'F-61509r925518_fix'
   tag cci: ['CCI-000366']

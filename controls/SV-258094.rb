@@ -19,7 +19,7 @@ Note: Manual changes to the listed file may be overwritten by the "authselect" p
   tag check_id: 'C-61835r1014877_chk'
   tag severity: 'high'
   tag gid: 'V-258094'
-  tag rid: 'SV-258094r1045187_rule'
+  tag rid: 'SV-258094r1268251_rule'
   tag stig_id: 'RHEL-09-611025'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
   tag fix_id: 'F-61759r1045186_fix'

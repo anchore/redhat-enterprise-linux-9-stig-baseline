@@ -12,6 +12,7 @@ $ mount | grep /var/log
 If the "/var/log" file system is mounted without the "nodev" option, this is a finding.'
   desc 'fix', 'Modify "/etc/fstab" to use the "nodev" option on the "/var/log" directory.'
   impact 0.5
+  tag check_id: 'C-61611r925595_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000368-GPOS-00154'
   tag gid: 'V-257870'

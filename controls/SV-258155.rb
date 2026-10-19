@@ -31,8 +31,10 @@ audit records.
     If audit records are not stored on a partition made specifically for audit
 records, a new partition with sufficient space will need be to be created.'
   impact 0.5
+  tag check_id: 'C-61896r1045299_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000341-GPOS-00132'
+  tag satisfies: ['SRG-OS-000341-GPOS-00132', 'SRG-OS-000342-GPOS-00133']
   tag gid: 'V-258155'
   tag rid: 'SV-258155r1045300_rule'
   tag stig_id: 'RHEL-09-653030'

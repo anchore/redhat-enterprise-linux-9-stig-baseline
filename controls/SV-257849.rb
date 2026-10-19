@@ -1,29 +1,30 @@
 control 'SV-257849' do
-  title 'RHEL 9 file system automount function must be disabled unless required.'
-  desc 'An authentication process resists replay attacks if it is impractical to achieve a successful authentication by recording and replaying a previous authentication message.'
-  desc 'check', 'Note: If the autofs service is not installed, this requirement is Not Applicable.
+  title 'The RHEL 9 file system automounter must be disabled.'
+  desc 'Without identifying devices, unidentified or unknown devices may be introduced, thereby facilitating malicious activity.
 
-Verify that the RHEL 9 file system automount function has been disabled with the following command:
+Peripherals include, but are not limited to, devices such as flash drives, external storage, and printers.'
+  desc 'check', 'Verify that RHEL 9 file system automount function has been disabled and masked with the following command:
 
-$ systemctl is-enabled  autofs
-
+$ $ systemctl is-enabled  autofs
 masked
 
-If the returned value is not "masked", "disabled", or "Failed to get unit file state for autofs.service for autofs" and is not documented as an operational requirement with the information system security officer (ISSO), this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to disable the ability to automount devices.
+If the returned value is not "masked", "disabled", or "not-found", this is a finding.'
+  desc 'fix', 'Configure RHEL 9 to disable and mask the ability to automount devices.
 
-The autofs service can be disabled with the following command:
+The "autofs" service can be disabled with the following command:
 
 $ sudo systemctl mask --now autofs.service'
   impact 0.5
+  tag check_id: 'C-61590r1262008_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000114-GPOS-00059'
+  tag satisfies: ['SRG-OS-000114-GPOS-00059', 'SRG-OS-000378-GPOS-00163']
   tag gid: 'V-257849'
-  tag rid: 'SV-257849r1044928_rule'
+  tag rid: 'SV-257849r1262109_rule'
   tag stig_id: 'RHEL-09-231040'
-  tag fix_id: 'F-61514r925533_fix'
-  tag cci: ['CCI-000778', 'CCI-000366', 'CCI-001958']
-  tag nist: ['IA-3', 'CM-6 b']
+  tag fix_id: 'F-61514r1262009_fix'
+  tag cci: ['CCI-000778', 'CCI-001958']
+  tag nist: ['IA-3']
   tag 'host'
 
   only_if('This control is Not Applicable to containers', impact: 0.0) {

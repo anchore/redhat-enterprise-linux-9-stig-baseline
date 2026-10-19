@@ -12,10 +12,11 @@ If any files on the system do not have an assigned group, this is a finding."
 
 $ sudo chgrp <group> <file>'
   impact 0.5
+  tag check_id: 'C-61671r925775_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
   tag gid: 'V-257930'
-  tag rid: 'SV-257930r991589_rule'
+  tag rid: 'SV-257930r1268251_rule'
   tag stig_id: 'RHEL-09-232250'
   tag fix_id: 'F-61595r925776_fix'
   tag cci: ['CCI-000366']

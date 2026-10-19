@@ -10,6 +10,7 @@ $ mount | grep /var/log/audit
 If the "/var/log/audit" file system is mounted without the "noexec" option, this is a finding.'
   desc 'fix', 'Modify "/etc/fstab" to use the "noexec" option on the "/var/log/audit" directory.'
   impact 0.5
+  tag check_id: 'C-61615r925607_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000368-GPOS-00154'
   tag gid: 'V-257874'

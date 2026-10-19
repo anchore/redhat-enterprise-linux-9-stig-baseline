@@ -12,14 +12,16 @@ tmpfs on /home type xfs (rw,nodev,nosuid,noexec,seclabel)
 If the "/home" file system is mounted without the "nosuid" option, this is a finding.'
   desc 'fix', 'Modify "/etc/fstab" to use the "nosuid" option on the "/home" directory.'
   impact 0.5
+  tag check_id: 'C-61592r1044931_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000368-GPOS-00154'
+  tag satisfies: ['SRG-OS-000368-GPOS-00154', 'SRG-OS-000480-GPOS-00227']
   tag gid: 'V-257851'
   tag rid: 'SV-257851r1044932_rule'
   tag stig_id: 'RHEL-09-231050'
   tag fix_id: 'F-61516r925539_fix'
-  tag cci: ['CCI-000366', 'CCI-001764']
-  tag nist: ['CM-6 b', 'CM-7 (2)']
+  tag cci: ['CCI-001764']
+  tag nist: ['CM-7 (2)']
   tag 'host'
 
   only_if('This control is Not Applicable to containers', impact: 0.0) {

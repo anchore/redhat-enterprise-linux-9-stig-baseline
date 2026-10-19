@@ -1,6 +1,6 @@
 control 'SV-257937' do
   title 'The RHEL 9 firewall must employ a deny-all, allow-by-exception policy for allowing connections to other systems.'
-  desc 'Failure to restrict network connectivity only to authorized systems permits inbound connections from malicious systems. It also permits outbound connections that may facilitate exfiltration of DOD data.
+  desc 'Failure to restrict network connectivity only to authorized systems permits inbound connections from malicious systems. It also permits outbound connections that may facilitate exfiltration of DoW data.
 
 RHEL 9 incorporates the "firewalld" daemon, which allows for many different configurations. One of these configurations is zones. Zones can be utilized to a deny-all, allow-by-exception approach. The default "drop" zone will drop all incoming network packets unless it is explicitly allowed by the configuration file or is related to an outgoing network connection.'
   desc 'check', 'Verify the RHEL 9 firewalld is configured to employ a deny-all, allow-by-exception policy for allowing connections to other systems with the following commands:
@@ -49,15 +49,15 @@ $ sudo firewall-cmd --permanent --zone=drop --change-interface=ens192
 Reload the firewall rules for changes to take effect:
 $ sudo firewall-cmd --reload'
   impact 0.5
+  tag check_id: 'C-61678r1106309_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
-  tag satisfies: ['SRG-OS-000368-GPOS-00154', 'SRG-OS-000370-GPOS-00155', 'SRG-OS-000480-GPOS-00232']
   tag gid: 'V-257937'
-  tag rid: 'SV-257937r1106310_rule'
+  tag rid: 'SV-257937r1268251_rule'
   tag stig_id: 'RHEL-09-251020'
   tag fix_id: 'F-61602r1102092_fix'
-  tag cci: ['CCI-001764', 'CCI-000366']
-  tag nist: ['CM-7 (2)', 'CM-6 b']
+  tag cci: ['CCI-000366']
+  tag nist: ['CM-6 b']
   tag 'host'
 
   only_if('This control is Not Applicable to containers', impact: 0.0) {

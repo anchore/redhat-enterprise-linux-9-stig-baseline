@@ -12,10 +12,11 @@ $ grep nfs /etc/fstab
 If the system is mounting file systems via NFS and the "nodev" option is missing, this is a finding.'
   desc 'fix', 'Update each NFS mounted file system to use the "nodev" option on file systems that are being imported via NFS.'
   impact 0.5
+  tag check_id: 'C-61595r1044933_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
   tag gid: 'V-257854'
-  tag rid: 'SV-257854r1044934_rule'
+  tag rid: 'SV-257854r1268251_rule'
   tag stig_id: 'RHEL-09-231065'
   tag fix_id: 'F-61519r925548_fix'
   tag cci: ['CCI-000366']

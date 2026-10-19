@@ -3,31 +3,30 @@ control 'SV-258053' do
   desc 'If the Group Identifier (GID) of a local interactive users home directory is not the same as the primary GID of the user, this would allow unauthorized access to the users files, and users that share the same group may not be able to access files that they legitimately should.'
   desc 'check', %q(Verify the assigned home directory of all local interactive users is group-owned by that user's primary GID with the following command:
 
-Note: This may miss local interactive users that have been assigned a privileged user identifier (UID). Evidence of interactive use may be obtained from a number of log files containing system logon information. The returned directory "/home/wadea" is used as an example.
+Note: This may miss local interactive users that have been assigned a privileged user identifier (UID). Evidence of interactive use may be obtained from a number of log files containing system logon information. The returned directory "/home/disauser" is used as an example.
 
-$ sudo ls -ld $(awk -F: '($3>=1000)&&($7 !~ /nologin/){print $6}' /etc/passwd)
-
-drwxr-x--- 2 wadea admin 4096 Jun 5 12:41 wadea
+$ getent passwd | awk -F: '($3>=1000 && $7!~/(nologin|false)$/){printf "User: %-15s Primary GID: %-5s Home: %s\\n", $1, $4, $6}'
+User: disauser        Primary GID: 1002  Home: /home/disauser
 
 Check the user's primary group with the following command:
 
-$ sudo grep $(grep wadea /etc/passwd | awk -F: ‘{print $4}') /etc/group
-
-admin:x:250:wadea,jonesj,jacksons
+$ stat -c "Directory: %n --> Actual GID: %g (%G)" /home/disauser
+Directory: /home/disauser --> Actual GID: 1002 (disauser)
 
 If the user home directory referenced in "/etc/passwd" is not group-owned by that user's primary GID, this is a finding.)
   desc 'fix', %q(Change the group owner of a local interactive user's home directory to the group found in "/etc/passwd". To change the group owner of a local interactive user's home directory, use the following command:
 
-Note: The example will be for the user "wadea", who has a home directory of "/home/wadea", and has a primary group of users.
+Note: The example will be for the user "disauser", who has a home directory of "/home/disauser", and has a primary group of users.
 
-$ sudo chgrp users /home/wadea)
+$ sudo chgrp users /home/disauser)
   impact 0.5
+  tag check_id: 'C-61794r1208480_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
   tag gid: 'V-258053'
-  tag rid: 'SV-258053r991589_rule'
+  tag rid: 'SV-258053r1268251_rule'
   tag stig_id: 'RHEL-09-411070'
-  tag fix_id: 'F-61718r926145_fix'
+  tag fix_id: 'F-61718r1184317_fix'
   tag cci: ['CCI-000366']
   tag nist: ['CM-6 b']
   tag 'host'

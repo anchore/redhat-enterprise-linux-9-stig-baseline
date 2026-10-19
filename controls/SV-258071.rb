@@ -14,6 +14,7 @@ Modify the "/etc/login.defs" file to set the "FAIL_DELAY" parameter to 4 or grea
 
 FAIL_DELAY 4'
   impact 0.5
+  tag check_id: 'C-61812r926198_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000480-GPOS-00226'
   tag gid: 'V-258071'

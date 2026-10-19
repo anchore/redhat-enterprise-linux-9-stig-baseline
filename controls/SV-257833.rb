@@ -24,14 +24,16 @@ If the "iprutils" package is installed and is not documented with the informatio
 
 $ sudo dnf remove iprutils'
   impact 0.5
+  tag check_id: 'C-61574r1044901_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000095-GPOS-00049'
+  tag satisfies: ['SRG-OS-000095-GPOS-00049', 'SRG-OS-000480-GPOS-00227']
   tag gid: 'V-257833'
   tag rid: 'SV-257833r1044902_rule'
   tag stig_id: 'RHEL-09-215050'
   tag fix_id: 'F-61498r925485_fix'
-  tag cci: ['CCI-000366', 'CCI-000381']
-  tag nist: ['CM-6 b', 'CM-7 a']
+  tag cci: ['CCI-000381']
+  tag nist: ['CM-7 a']
   tag 'host'
   tag 'container'
 

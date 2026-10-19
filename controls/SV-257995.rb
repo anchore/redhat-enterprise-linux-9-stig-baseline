@@ -24,9 +24,10 @@ For the changes to take effect, the SSH daemon must be restarted.
 
 $ sudo systemctl restart sshd.service'
   impact 0.5
+  tag check_id: 'C-61736r952195_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000163-GPOS-00072'
-  tag satisfies: ['SRG-OS-000163-GPOS-00072', 'SRG-OS-000126-GPOS-00066', 'SRG-OS-000279-GPOS-00109']
+  tag satisfies: ['SRG-OS-000163-GPOS-00072', 'SRG-OS-000279-GPOS-00109']
   tag gid: 'V-257995'
   tag rid: 'SV-257995r1045053_rule'
   tag stig_id: 'RHEL-09-255095'

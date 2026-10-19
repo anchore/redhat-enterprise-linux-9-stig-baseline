@@ -16,14 +16,16 @@ Add the following line to the "/etc/pam.d/password-auth" file (or modify the lin
 
 password required pam_pwquality.so'
   impact 0.5
+  tag check_id: 'C-61838r1045192_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000069-GPOS-00037'
+  tag satisfies: ['SRG-OS-000069-GPOS-00037', 'SRG-OS-000070-GPOS-00038', 'SRG-OS-000480-GPOS-00227']
   tag gid: 'V-258097'
   tag rid: 'SV-258097r1045193_rule'
   tag stig_id: 'RHEL-09-611040'
   tag fix_id: 'F-61762r926277_fix'
-  tag cci: ['CCI-000192', 'CCI-000366', 'CCI-000193', 'CCI-004066']
-  tag nist: ['IA-5 (1) (a)', 'CM-6 b', 'IA-5 (1) (h)']
+  tag cci: ['CCI-004066', 'CCI-000192', 'CCI-000193']
+  tag nist: ['IA-5 (1) (h)', 'IA-5 (1) (a)']
   tag 'host'
   tag 'container'
 

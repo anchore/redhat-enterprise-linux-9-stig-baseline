@@ -11,10 +11,11 @@ Note: Options displayed for mount may differ.
 If a separate entry for "/var/log" is not in use, this is a finding.'
   desc 'fix', 'Migrate the "/var/log" path onto a separate file system.'
   impact 0.3
+  tag check_id: 'C-61587r1044921_chk'
   tag severity: 'low'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
   tag gid: 'V-257846'
-  tag rid: 'SV-257846r1044922_rule'
+  tag rid: 'SV-257846r1268251_rule'
   tag stig_id: 'RHEL-09-231025'
   tag fix_id: 'F-61511r925524_fix'
   tag cci: ['CCI-000366']

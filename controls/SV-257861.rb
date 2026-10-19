@@ -10,14 +10,16 @@ $ mount | grep '\s/boot\s'
 If the /boot file system does not have the "nosuid" option set, this is a finding.)
   desc 'fix', 'Modify "/etc/fstab" to use the "nosuid" option on the "/boot" directory.'
   impact 0.5
+  tag check_id: 'C-61602r1014833_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000368-GPOS-00154'
+  tag satisfies: ['SRG-OS-000368-GPOS-00154', 'SRG-OS-000480-GPOS-00227']
   tag gid: 'V-257861'
   tag rid: 'SV-257861r1044941_rule'
   tag stig_id: 'RHEL-09-231100'
   tag fix_id: 'F-61526r925569_fix'
-  tag cci: ['CCI-000366', 'CCI-001764']
-  tag nist: ['CM-6 b', 'CM-7 (2)']
+  tag cci: ['CCI-001764']
+  tag nist: ['CM-7 (2)']
   tag 'host'
 
   only_if('This control is Not Applicable to containers', impact: 0.0) {

@@ -39,8 +39,10 @@ control 'SV-258047' do
 
     $ sudo chage -E $(date -d +3days +%Y-%m-%d) <temporary_account_name>'
   impact 0.5
+  tag check_id: 'C-61788r926126_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000123-GPOS-00064'
+  tag satisfies: ['SRG-OS-000123-GPOS-00064', 'SRG-OS-000002-GPOS-00002']
   tag gid: 'V-258047'
   tag rid: 'SV-258047r1101951_rule'
   tag stig_id: 'RHEL-09-411040'

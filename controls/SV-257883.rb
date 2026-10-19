@@ -14,6 +14,7 @@ Run the following command, replacing "[DIRECTORY]" with any library directory wi
 
 $ sudo chmod 755 [DIRECTORY]'
   impact 0.5
+  tag check_id: 'C-61624r925634_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000259-GPOS-00100'
   tag gid: 'V-257883'

@@ -1,8 +1,8 @@
 control 'SV-257792' do
   title 'RHEL 9 must disable virtual system calls.'
-  desc 'System calls are special routines in the Linux kernel, which userspace applications ask to do privileged tasks. Invoking a system call is an expensive operation because the processor must interrupt the currently executing task and switch context to kernel mode and then back to userspace after the system call completes. Virtual system calls map into user space a page that contains some variables and the implementation of some system calls. This allows the system calls to be executed in userspace to alleviate the context switching expense.
+  desc 'System calls are special routines in the Linux kernel, which userspace applications ask to do privileged tasks. Invoking a system call is an expensive operation because the processor must interrupt the currently executing task and switch context to kernel mode and then back to userspace after the system call completes. Virtual system calls map into user space a page that contains some variables and the implementation of some system calls. This allows the system calls System calls are special routines in the Linux kernel, which userspace applications ask to do privileged tasks. Invoking a system call is an expensive operation because the processor must interrupt the currently executing task and switch context to kernel mode and then back to userspace after the system call completes. Virtual system calls map into user space a page that contains some variables and the implementation of some system calls. This allows the system calls to be executed in user space to alleviate the context-switching expense.
 
-Virtual system calls provide an opportunity of attack for a user who has control of the return instruction pointer. Disabling virtual system calls help to prevent return oriented programming (ROP) attacks via buffer overflows and overruns. If the system intends to run containers based on RHEL 6 components, then virtual system calls will need enabled so the components function properly.'
+Virtual system calls provide an opportunity of attack for a user who has control of the return instruction pointer. Disabling virtual system calls help to prevent return-oriented programming attacks via buffer overflows and overruns.'
   desc 'check', %q(Verify the current GRUB 2 configuration disables virtual system calls with the following command:
 
 $ sudo grubby --info=ALL | grep args | grep -v 'vsyscall=none'
@@ -27,14 +27,14 @@ GRUB_CMDLINE_LINUX="vsyscall=none"'
   tag check_id: 'C-61533r925361_chk'
   tag severity: 'medium'
   tag gid: 'V-257792'
-  tag rid: 'SV-257792r1044842_rule'
+  tag rid: 'SV-257792r1268251_rule'
   tag stig_id: 'RHEL-09-212035'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
   tag fix_id: 'F-61457r925362_fix'
   tag satisfies: ['SRG-OS-000480-GPOS-00227', 'SRG-OS-000134-GPOS-00068']
   tag 'documentable'
-  tag cci: ['CCI-000366', 'CCI-001084']
-  tag nist: ['CM-6 b', 'SC-3']
+  tag cci: ['CCI-001084']
+  tag nist: ['SC-3']
   tag 'host'
 
   only_if('Control not applicable within a container', impact: 0.0) {

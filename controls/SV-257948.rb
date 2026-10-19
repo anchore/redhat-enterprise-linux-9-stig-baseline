@@ -29,10 +29,11 @@ $ nmcli connection modify [connection name] ipv4.dns [name server 1],[name serve
 
 Replace [name server 1] and [name server 2] with the IPs of two different DNS resolvers. Replace [connection name] with a valid NetworkManager connection name on the system. Replace ipv4 with ipv6 if IPv6 DNS servers are used.'
   impact 0.5
+  tag check_id: 'C-61689r1045002_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
   tag gid: 'V-257948'
-  tag rid: 'SV-257948r1045004_rule'
+  tag rid: 'SV-257948r1268251_rule'
   tag stig_id: 'RHEL-09-252035'
   tag fix_id: 'F-61613r1045003_fix'
   tag cci: ['CCI-000366']

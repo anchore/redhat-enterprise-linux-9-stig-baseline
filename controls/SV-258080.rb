@@ -46,8 +46,8 @@ $ sudo restorecon -R -v /var/log/faillock'
   tag gtitle: 'SRG-OS-000021-GPOS-00005'
   tag fix_id: 'F-61745r1045161_fix'
   tag 'documentable'
-  tag cci: ['CCI-000044', 'CCI-002238']
-  tag nist: ['AC-7 a', 'AC-7 b']
+  tag cci: ['CCI-000044']
+  tag nist: ['AC-7 a']
   tag 'host'
 
   if virtualization.container_system?

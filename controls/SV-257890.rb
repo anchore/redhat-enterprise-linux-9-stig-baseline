@@ -8,21 +8,22 @@ Note: This may miss interactive users that have been assigned a privileged user 
 
 $ stat -L -c '%a %n' $(awk -F: '($3>=1000)&&($7 !~ /nologin/){print $6}' /etc/passwd) 2>/dev/null
 
-700 /home/bingwa
+700 /home/disauser
 
 If home directories referenced in "/etc/passwd" do not have a mode of "0750" or less permissive, this is a finding.)
-  desc 'fix', %q(Change the mode of interactive user's home directories to "0750". To change the mode of a local interactive user's home directory, use the following command:
+  desc 'fix', %q(Change the mode of interactive user's home directories to "0750" using the following command:
 
-Note: The example will be for the user "wadea".
+Note: The example will be for the user "disauser".
 
-$ sudo chmod 0750 /home/wadea)
+$ sudo chmod 0750 /home/disauser)
   impact 0.5
+  tag check_id: 'C-61631r1184303_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
   tag gid: 'V-257890'
-  tag rid: 'SV-257890r1044961_rule'
+  tag rid: 'SV-257890r1268251_rule'
   tag stig_id: 'RHEL-09-232050'
-  tag fix_id: 'F-61555r925656_fix'
+  tag fix_id: 'F-61555r1184304_fix'
   tag cci: ['CCI-000366']
   tag nist: ['CM-6 b']
   tag 'host'

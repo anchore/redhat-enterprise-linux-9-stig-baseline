@@ -24,6 +24,7 @@ If the variable name "StreamDriverAuthMode" is present in an omfwd statement blo
 
 $ActionSendStreamDriverMode 1'
   impact 0.5
+  tag check_id: 'C-61888r1045289_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000342-GPOS-00133'
   tag satisfies: ['SRG-OS-000342-GPOS-00133', 'SRG-OS-000479-GPOS-00224']

@@ -11,7 +11,7 @@ overflow_action = syslog
 
 If the value of the "overflow_action" option is not set to "syslog", "single", "halt" or the line is commented out, ask the system administrator (SA) to indicate how the audit logs are offloaded to a different system or media.
 
-If there is no evidence that the transfer of the audit logs being offloaded to another system or media takes appropriate action if the internal event queue becomes full, this is a finding.'
+If there is no evidence that the audit system is configured to off-load the audit logs to another system or media and if the overflow action is not set to take appropriate action if the internal event queue becomes full, this is a finding.'
   desc 'fix', 'Edit the /etc/audit/auditd.conf file and add or update the
 "overflow_action" option:
 
@@ -19,11 +19,12 @@ If there is no evidence that the transfer of the audit logs being offloaded to a
 
     The audit daemon must be restarted for changes to take effect.'
   impact 0.5
+  tag check_id: 'C-61903r1184330_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000342-GPOS-00133'
   tag satisfies: ['SRG-OS-000342-GPOS-00133', 'SRG-OS-000479-GPOS-00224']
   tag gid: 'V-258162'
-  tag rid: 'SV-258162r958754_rule'
+  tag rid: 'SV-258162r1184331_rule'
   tag stig_id: 'RHEL-09-653065'
   tag fix_id: 'F-61827r926472_fix'
   tag cci: ['CCI-001851']

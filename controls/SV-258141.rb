@@ -14,14 +14,16 @@ If the "rsyslog-gnutls" package is not installed, this is a finding.'
 
 $ sudo dnf install rsyslog-gnutls'
   impact 0.5
+  tag check_id: 'C-61882r1045279_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
+  tag satisfies: ['SRG-OS-000480-GPOS-00227', 'SRG-OS-000120-GPOS-00061']
   tag gid: 'V-258141'
-  tag rid: 'SV-258141r1045280_rule'
+  tag rid: 'SV-258141r1268251_rule'
   tag stig_id: 'RHEL-09-652015'
   tag fix_id: 'F-61806r926409_fix'
-  tag cci: ['CCI-000366', 'CCI-000803']
-  tag nist: ['CM-6 b', 'IA-7']
+  tag cci: ['CCI-000803']
+  tag nist: ['IA-7']
   tag 'host'
 
   only_if('This control is Not Applicable to containers', impact: 0.0) {

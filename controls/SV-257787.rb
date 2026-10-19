@@ -1,24 +1,22 @@
 control 'SV-257787' do
-  title 'RHEL 9 must require a boot loader superuser password.'
-  desc 'To mitigate the risk of unauthorized access to sensitive information by entities that have been issued certificates by DOD-approved PKIs, all DOD systems (e.g., web servers and web portals) must be properly configured to incorporate access control methods that do not rely solely on the possession of a certificate for access. Successful authentication must not automatically give an entity access to an asset or security boundary. Authorization procedures and controls must be implemented to ensure each authenticated entity also has a validated and current authorization. Authorization is the process of determining whether an entity, once authenticated, is permitted to access a specific asset. Information systems use access control policies and enforcement mechanisms to implement this requirement.
+  title 'RHEL 9 must require authentication upon booting into single-user and maintenance modes.'
+  desc 'To mitigate the risk of unauthorized access to sensitive information by entities that have been issued certificates by DoW-approved PKIs, all DoW systems (e.g., web servers and web portals) must be properly configured to incorporate access control methods that do not rely solely on the possession of a certificate for access. Successful authentication must not automatically give an entity access to an asset or security boundary. Authorization procedures and controls must be implemented to ensure each authenticated entity also has a validated and current authorization. Authorization is the process of determining whether an entity, once authenticated, is permitted to access a specific asset. Information systems use access control policies and enforcement mechanisms to implement this requirement.
 
 Password protection on the boot loader configuration ensures users with physical access cannot trivially alter important bootloader settings. These include which kernel to use, and whether to enter single-user mode.'
-  desc 'check', 'Verify the boot loader superuser password has been set with the following command:
+  desc 'check', 'Verify that RHEL 9 requires a password for the GRUB 2 bootloader to prevent unauthorized modifications to boot parameters.
 
-$ sudo grep password_pbkdf2 /etc/grub2.cfg
+Check the unified configuration file where the GRUB 2 password is stored:
 
-password_pbkdf2  <superusers-accountname>   ${GRUB2_PASSWORD}
+# sudo grep -iw "GRUB2_PASSWORD" /boot/grub2/user.cfg
+GRUB2_PASSWORD=grub.pbkdf2.sha512.[password_hash]
 
-To verify the boot loader superuser account password has been set and the password encrypted, run the following command:
+If the "GRUB2_PASSWORD" entry does not exist, is commented out, or if the hash does not begin with "grub.pbkdf2.sha512", this is a finding.
 
-$ sudo cat /boot/grub2/user.cfg
+Note for upgraded systems: If the system was upgraded from an early release of RHEL 8 to RHEL 9, legacy configurations might still reside in the EFI partition. If "/boot/grub2/user.cfg" does not exist, verify the legacy path:
 
-GRUB2_PASSWORD=grub.pbkdf2.sha512.10000.C4E08AC72FBFF7E837FD267BFAD7AEB3D42DDC
-2C99F2A94DD5E2E75C2DC331B719FE55D9411745F82D1B6CFD9E927D61925F9BBDD1CFAA0080E0
-916F7AB46E0D.1302284FCCC52CD73BA3671C6C12C26FF50BA873293B24EE2A96EE3B57963E6D7
-0C83964B473EC8F93B07FE749AA6710269E904A9B08A6BBACB00A2D242AD828
+# grep -iw "GRUB2_PASSWORD" /boot/efi/EFI/redhat/user.cfg
 
-If a "GRUB2_PASSWORD" is not set, this is a finding.'
+If the "GRUB2_PASSWORD" entry does not exist in either location, is commented out, or does not begin with "grub.pbkdf2.sha512", this is a finding.'
   desc 'fix', 'Configure RHEL 9 to require a grub bootloader password for the grub superuser account.
 
 Generate an encrypted grub2 password for the grub superuser account with the following command:
@@ -27,10 +25,10 @@ $ sudo grub2-setpassword
 Enter password:
 Confirm password:'
   impact 0.5
-  tag check_id: 'C-61528r1044835_chk'
+  tag check_id: 'C-61528r1261989_chk'
   tag severity: 'medium'
   tag gid: 'V-257787'
-  tag rid: 'SV-257787r1137691_rule'
+  tag rid: 'SV-257787r1268226_rule'
   tag stig_id: 'RHEL-09-212010'
   tag gtitle: 'SRG-OS-000080-GPOS-00048'
   tag fix_id: 'F-61452r925347_fix'

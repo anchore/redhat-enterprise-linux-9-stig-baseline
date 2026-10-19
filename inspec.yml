@@ -4,7 +4,7 @@ maintainer: MITRE SAF Team
 copyright: MITRE
 license: Apache-2.0
 summary: "InSpec profile aligned to DISA STIG for RHEL9"
-version: 2.7.2
+version: 2.10.0
 # NOTE: for testing with test-kitchen, put back to ">= 6.0" when finished
 inspec_version: ">= 5.0"
 
@@ -95,13 +95,13 @@ inputs:
   - name: ssh_private_key_mode
     description: All private ssh keyfiles on the filesystem should be equal or less permissive than this octet
     type: String
-    value: '0640'
+    value: '0600'
 
   # SV-258171
   - name: audit_conf_mode
     description: All audit config files on the filesystem should be equal or less permissive than this octet
     type: String
-    value: '0640'
+    value: '0600'
 
   # SV-257887
   - name: audit_tool_mode
@@ -210,7 +210,7 @@ inputs:
   - name: pass_max_days
     description: "The maximum password lifetime restriction in days"
     type: Numeric
-    value: 60
+    value: 180
 
   # SV-257843
   - name: exempt_separate_filesystem
@@ -907,12 +907,6 @@ inputs:
     type: Boolean
     value: false
   
-  # SV-257836
-  - name: quagga_required
-    description: Set to true if there is a documented requirement for the target system to use quagga
-    type: Boolean
-    value: false
-
   # SV-257935
   - name: alternate_firewall_tool
     description: Alternate firewall tool (other than firewalld) in use for the system - leave blank if using default OS tools
@@ -930,7 +924,7 @@ inputs:
   # If you need to override these values, do so via adding the desired key/value to
   # the `audit_rule_keynames_overrides` input instead -- overriding `audit_rule_keynames`
   # directly will lose the values for any key you do not explictly define.
-  # SV-258176, SV-258177, SV-258178, SV-258179, SV-258180, SV-258181, SV-258182, SV-258183, SV-258184, SV-258185, SV-258186, SV-258187, SV-258188, SV-258189, SV-258190, SV-258191, SV-258192, SV-258193, SV-258194, SV-258195, SV-258196, SV-258197, SV-258198, SV-258199, SV-258200, SV-258201, SV-258202, SV-258203, SV-258204, SV-258205, SV-258206, SV-258207, SV-258208, SV-258209, SV-258210, SV-258211, SV-258212, SV-258213, SV-258214, SV-258215, SV-258216, SV-258217, SV-258218, SV-258219, SV-258220, SV-258221, SV-258222, SV-258223, SV-258224, SV-258225, SV-258226, SV-279936
+  # SV-258176, SV-258177, SV-258178, SV-258179, SV-258180, SV-258181, SV-258182, SV-258183, SV-258184, SV-258185, SV-258186, SV-258187, SV-258188, SV-258189, SV-258190, SV-258191, SV-258192, SV-258193, SV-258194, SV-258195, SV-258196, SV-258197, SV-258198, SV-258199, SV-258200, SV-258201, SV-258202, SV-258203, SV-258204, SV-258205, SV-258206, SV-258207, SV-258208, SV-258209, SV-258210, SV-258211, SV-258212, SV-258213, SV-258214, SV-258215, SV-258216, SV-258217, SV-258218, SV-258219, SV-258220, SV-258221, SV-258222, SV-258223, SV-258224, SV-258225, SV-258226, SV-279936, SV-288832
   - name: audit_rule_keynames
     description: The audit rules to be applied to the system
     type: Hash
@@ -953,7 +947,7 @@ inputs:
       '/usr/bin/chage'                : 'privileged-chage',
       '/usr/bin/chcon'                : 'perm_mod',
       '/usr/bin/ssh-agent'            : 'privileged-ssh',
-      '/usr/bin/passwd'               : 'privileged-passwd',
+      '/usr/bin/passwd'               : 'identity',
       '/usr/bin/mount'                : 'privileged-mount',
       '/usr/bin/umount'               : 'privileged-mount',
       'mount'                         : 'privileged-mount',
@@ -977,7 +971,7 @@ inputs:
       'rmdir'                         : 'delete',
       'renameat'                      : 'delete',
       'unlinkat'                      : 'delete',
-      '/usr/bin/gpasswd'              : 'privileged-gpasswd',
+      '/usr/bin/gpasswd'              : 'identity',
       'delete_module'                 : 'module_chng',
       '/usr/bin/crontab'              : 'privileged-crontab',
       '/usr/bin/chsh'                 : 'priv_cmd',
@@ -996,6 +990,7 @@ inputs:
       'fchmodat'                      : 'perm_mod',
       '/usr/bin/sudo'                 : 'priv_cmd',
       '/usr/sbin/usermod'             : 'privileged-usermod',
+      '/usr/sbin/useradd'             : 'privileged-useradd',
       '/usr/bin/chacl'                : 'perm_mod',
       '/usr/bin/kmod'                 : 'modules',
       '/var/log/faillock'             : 'logins',
@@ -1007,8 +1002,7 @@ inputs:
       '/usr/sbin/shutdown'            : 'privileged-shutdown',
       'umount2'                       : 'perm_mod',
       '/var/log/tallylog'             : 'logins',
-      '/etc/cron.d'                   : 'cronjobs',
-      '/var/spool/cron'               : 'cronjobs'
+      'crond_t'                       : 'cron_exec'
     }
 
   # Override values for expected keynames for all audit rules
@@ -1019,7 +1013,7 @@ inputs:
   # {
   #   'execve': 'my_org_specific_keyname_for_auditing_execve'
   # }
-  # SV-258176, SV-258177, SV-258178, SV-258179, SV-258180, SV-258181, SV-258182, SV-258183, SV-258184, SV-258185, SV-258186, SV-258187, SV-258188, SV-258189, SV-258190, SV-258191, SV-258192, SV-258193, SV-258194, SV-258195, SV-258196, SV-258197, SV-258198, SV-258199, SV-258200, SV-258201, SV-258202, SV-258203, SV-258204, SV-258205, SV-258206, SV-258207, SV-258208, SV-258209, SV-258210, SV-258211, SV-258212, SV-258213, SV-258214, SV-258215, SV-258216, SV-258217, SV-258218, SV-258219, SV-258220, SV-258221, SV-258222, SV-258223, SV-258224, SV-258225, SV-258226, SV-279936
+  # SV-258176, SV-258177, SV-258178, SV-258179, SV-258180, SV-258181, SV-258182, SV-258183, SV-258184, SV-258185, SV-258186, SV-258187, SV-258188, SV-258189, SV-258190, SV-258191, SV-258192, SV-258193, SV-258194, SV-258195, SV-258196, SV-258197, SV-258198, SV-258199, SV-258200, SV-258201, SV-258202, SV-258203, SV-258204, SV-258205, SV-258206, SV-258207, SV-258208, SV-258209, SV-258210, SV-258211, SV-258212, SV-258213, SV-258214, SV-258215, SV-258216, SV-258217, SV-258218, SV-258219, SV-258220, SV-258221, SV-258222, SV-258223, SV-258224, SV-258225, SV-258226, SV-279936, SV-288832
   - name: audit_rule_keynames_overrides
     description: The audit rules to be applied to the system
     type: Hash

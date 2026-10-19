@@ -14,14 +14,16 @@ Use the following command template to set ownership of public directories to roo
 
 $ sudo chown [root or system account] [Public Directory]'
   impact 0.5
+  tag check_id: 'C-61669r1155574_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
+  tag satisfies: ['SRG-OS-000480-GPOS-00227', 'SRG-OS-000138-GPOS-00069']
   tag gid: 'V-257928'
-  tag rid: 'SV-257928r1155576_rule'
+  tag rid: 'SV-257928r1268251_rule'
   tag stig_id: 'RHEL-09-232240'
   tag fix_id: 'F-61593r1155575_fix'
-  tag cci: ['CCI-000366', 'CCI-001090']
-  tag nist: ['CM-6 b', 'SC-4']
+  tag cci: ['CCI-001090']
+  tag nist: ['SC-4']
   tag 'host'
   tag 'container'
 

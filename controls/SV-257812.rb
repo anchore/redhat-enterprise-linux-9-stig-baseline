@@ -18,10 +18,11 @@ Add or modify the following line in /etc/systemd/coredump.conf:
 
 ProcessSizeMax=0'
   impact 0.5
+  tag check_id: 'C-61553r1134896_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
   tag gid: 'V-257812'
-  tag rid: 'SV-257812r1134897_rule'
+  tag rid: 'SV-257812r1268251_rule'
   tag stig_id: 'RHEL-09-213085'
   tag fix_id: 'F-61477r925422_fix'
   tag cci: ['CCI-000366']

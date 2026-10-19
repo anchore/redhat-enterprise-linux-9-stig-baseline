@@ -22,27 +22,28 @@ Certificate:
         Version: 3 (0x2)
         Serial Number: 1 (0x1)
         Signature Algorithm: sha256WithRSAEncryption
-        Issuer: C = US, O = U.S. Government, OU = DoD, OU = PKI, CN = DoD Root CA 3
+        Issuer: C = US, O = U.S. Government, OU = DoW, OU = PKI, CN = DoD Root CA 3
         Validity
         Not Before: Mar 20 18:46:41 2012 GMT
         Not After: Dec 30 18:46:41 2029 GMT
-        Subject: C = US, O = U.S. Government, OU = DoD, OU = PKI, CN = DoD Root CA 3
+        Subject: C = US, O = U.S. Government, OU = DoW, OU = PKI, CN = DoD Root CA 3
         Subject Public Key Info:
             Public Key Algorithm: rsaEncryption
 
-If the root CA file is not a DOD-issued certificate with a valid date and installed in the "/etc/sssd/pki/sssd_auth_ca_db.pem" location, this is a finding.'
+If the root CA file is not a DoW-issued certificate with a valid date and installed in the "/etc/sssd/pki/sssd_auth_ca_db.pem" location, this is a finding.'
   desc 'fix', 'Configure RHEL 9, for PKI-based authentication, to validate certificates by constructing a certification path (which includes status information) to an accepted trust anchor.
 
-Obtain a valid copy of the DOD root CA file from the PKI CA certificate bundle from cyber.mil and copy the DoD_PKE_CA_chain.pem into the following file:
+Obtain a valid copy of the DOD root CA file from the PKI CA certificate bundle from cyber.mil and copy the DoW_PKE_CA_chain.pem into the following file:
 /etc/sssd/pki/sssd_auth_ca_db.pem'
   impact 0.5
+  tag check_id: 'C-61872r1262090_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000066-GPOS-00034'
   tag satisfies: ['SRG-OS-000066-GPOS-00034', 'SRG-OS-000384-GPOS-00167']
   tag gid: 'V-258131'
-  tag rid: 'SV-258131r1134927_rule'
+  tag rid: 'SV-258131r1262156_rule'
   tag stig_id: 'RHEL-09-631010'
-  tag fix_id: 'F-61796r997112_fix'
+  tag fix_id: 'F-61796r1262091_fix'
   tag cci: ['CCI-000185', 'CCI-001991', 'CCI-004068']
   tag nist: ['IA-5 (2) (a)', 'IA-5 (2) (b) (1)', 'IA-5 (2) (d)', 'IA-5 (2) (b) (2)']
   tag 'host'

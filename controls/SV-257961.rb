@@ -4,7 +4,7 @@ control 'SV-257961' do
 
 Preventing unauthorized information transfers mitigates the risk of information, including encrypted representations of information, produced by the actions of prior users/roles (or the actions of processes acting on behalf of prior users/roles) from being available to any current users/roles (or current processes) that obtain access to shared system resources (e.g., registers, main memory, hard disks) after those resources have been released back to information systems. The control of information in shared resources is also commonly referred to as object reuse and residual information protection.
 
-This requirement generally applies to the design of an information technology product, but it can also apply to the configuration of particular information system components that are, or use, such products. This can be verified by acceptance/validation processes in DOD or other government agencies.
+This requirement generally applies to the design of an information technology product, but it can also apply to the configuration of particular information system components that are, or use, such products. This can be verified by acceptance/validation processes in DoW or other government agencies.
 
 There may be shared resources with configurable protections (e.g., files in storage) that may be assessed on specific information system components.
 
@@ -42,7 +42,7 @@ $ sudo sysctl --system'
   tag check_id: 'C-61702r1155728_chk'
   tag severity: 'medium'
   tag gid: 'V-257961'
-  tag rid: 'SV-257961r1155730_rule'
+  tag rid: 'SV-257961r1268251_rule'
   tag stig_id: 'RHEL-09-253030'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
   tag fix_id: 'F-61626r1155729_fix'

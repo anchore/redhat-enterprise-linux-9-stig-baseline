@@ -18,14 +18,16 @@ The SSH service must be restarted for changes to take effect:
 
 $ sudo systemctl restart sshd.service'
   impact 0.5
+  tag check_id: 'C-61745r952203_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000364-GPOS-00151'
+  tag satisfies: ['SRG-OS-000364-GPOS-00151', 'SRG-OS-000480-GPOS-00227']
   tag gid: 'V-258004'
   tag rid: 'SV-258004r1045067_rule'
   tag stig_id: 'RHEL-09-255140'
   tag fix_id: 'F-61669r1045066_fix'
-  tag cci: ['CCI-000366', 'CCI-001813']
-  tag nist: ['CM-6 b', 'CM-5 (1) (a)']
+  tag cci: ['CCI-001813']
+  tag nist: ['CM-5 (1) (a)']
   tag 'host'
   tag 'container-conditional'
 

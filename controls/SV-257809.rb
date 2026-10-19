@@ -14,33 +14,46 @@ The sysctl --system command will load settings from all system configuration fil
 /etc/sysctl.conf'
   desc 'check', 'Verify RHEL 9 is implementing ASLR.
 
-Check the status of the "kernel.randomize_va_space" kernel parameter with the following command:
-
 $ sudo sysctl kernel.randomize_va_space
 kernel.randomize_va_space = 2
 
-If "kernel.randomize_va_space" is not set to "2" or is missing, this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to implement ASLR.
+If "kernel.randomize_va_space" is not set to "2", this is a finding.
 
-Create the drop-in if it does not already exist:
+Check that the configuration files are present to enable this kernel parameter.
 
-$ sudo vi /etc/sysctl.d/99-kernel_randomize_va_space.conf
+$ sudo grep -rs kernel.randomize_va_space /run/sysctl.d/*.conf /usr/local/lib/sysctl.d/*.conf /usr/lib/sysctl.d/*.conf /lib/sysctl.d/*.conf /etc/sysctl.conf /etc/sysctl.d/*.conf
+/etc/sysctl.d/99-kernel_randomize_va_space.conf:kernel.randomize_va_space = 2
 
-Add the following line to the file:
-kernel.randomize_va_space = 2
+If "kernel.randomize_va_space" is not set to "2", or is missing or commented out, this is a finding.
 
-Reload settings from all system configuration files with the following command:
+If conflicting results are returned, this is a finding.'
+  desc 'fix', "Configure RHEL 9 to implement ASLR.
 
-$ sudo sysctl --system'
+$ echo 'kernel.randomize_va_space = 2' | sudo tee /etc/sysctl.d/99-kernel_randomize_va_space.conf
+
+Remove any configurations that conflict with the above from the following locations:
+
+/run/sysctl.d/*.conf
+/usr/local/lib/sysctl.d/*.conf
+/usr/lib/sysctl.d/*.conf
+/lib/sysctl.d/*.conf
+/etc/sysctl.conf
+/etc/sysctl.d/*.conf
+
+Issue the following command to make the changes take effect:
+
+$ sudo sysctl --system"
   impact 0.5
+  tag check_id: 'C-61550r1208767_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000433-GPOS-00193'
+  tag satisfies: ['SRG-OS-000433-GPOS-00193', 'SRG-OS-000480-GPOS-00227']
   tag gid: 'V-257809'
-  tag rid: 'SV-257809r1155709_rule'
+  tag rid: 'SV-257809r1208769_rule'
   tag stig_id: 'RHEL-09-213070'
-  tag fix_id: 'F-61474r1155708_fix'
-  tag cci: ['CCI-002824', 'CCI-000366']
-  tag nist: ['SI-16', 'CM-6 b']
+  tag fix_id: 'F-61474r1208768_fix'
+  tag cci: ['CCI-002824']
+  tag nist: ['SI-16']
   tag 'host'
 
   only_if('Control not applicable within a container', impact: 0.0) {

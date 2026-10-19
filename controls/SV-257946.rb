@@ -1,7 +1,9 @@
 control 'SV-257946' do
   title 'RHEL 9 must disable the chrony daemon from acting as a server.'
   desc 'Minimizing the exposure of the server functionality of the chrony daemon diminishes the attack surface.'
-  desc 'check', 'Verify RHEL 9 disables the chrony daemon from acting as a server with the following command:
+  desc 'check', 'Note: If the server is serving as an NTP server, this is not applicable.
+
+Verify RHEL 9 disables the chrony daemon from acting as a server with the following command:
 
 $ grep -w port /etc/chrony.conf
 
@@ -12,10 +14,12 @@ If the "port" option is not set to "0", is commented out, or is missing, this is
 
 port 0'
   impact 0.3
+  tag check_id: 'C-61687r1184306_chk'
   tag severity: 'low'
   tag gtitle: 'SRG-OS-000096-GPOS-00050'
+  tag satisfies: ['SRG-OS-000096-GPOS-00050', 'SRG-OS-000095-GPOS-00049']
   tag gid: 'V-257946'
-  tag rid: 'SV-257946r958480_rule'
+  tag rid: 'SV-257946r1184307_rule'
   tag stig_id: 'RHEL-09-252025'
   tag fix_id: 'F-61611r925824_fix'
   tag cci: ['CCI-000381', 'CCI-000382']
