@@ -1,5 +1,5 @@
 control 'SV-258242' do
-  title 'RHEL 9 must implement DOD-approved encryption in the bind package.'
+  title 'RHEL 9 must implement DoW-approved encryption in the bind package.'
   desc 'Without cryptographic integrity protections, information can be altered by unauthorized users without detection.
 
 Cryptographic mechanisms used for protecting the integrity of information include, for example, signed hash functions using asymmetric cryptography enabling distribution of the public key to verify the hash information while maintaining the confidentiality of the secret key used to generate the hash.
@@ -19,11 +19,11 @@ If BIND is installed and the BIND config file doesn't contain the  include "/etc
 Add the following line to the "options" section in "/etc/named.conf":
 
 include "/etc/crypto-policies/back-ends/bind.config";'
-  impact 0.5
+  impact 0.7
   tag check_id: 'C-61983r926711_chk'
-  tag severity: 'medium'
+  tag severity: 'high'
   tag gid: 'V-258242'
-  tag rid: 'SV-258242r958908_rule'
+  tag rid: 'SV-258242r1262158_rule'
   tag stig_id: 'RHEL-09-672050'
   tag gtitle: 'SRG-OS-000423-GPOS-00187'
   tag fix_id: 'F-61907r926712_fix'

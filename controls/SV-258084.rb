@@ -8,24 +8,26 @@ If the value is set to an integer less than "0", the user's time stamp will not 
   desc 'check', %q(Verify RHEL 9 requires reauthentication when using the "sudo" command to elevate privileges with the following command:
 
 $ sudo grep -ir 'timestamp_timeout' /etc/sudoers /etc/sudoers.d/
-
 /etc/sudoers:Defaults timestamp_timeout=0
 
 If results are returned from more than one file location, this is a finding.
 
-If "timestamp_timeout" is set to a negative number, is commented out, or no results are returned, this is a finding.)
-  desc 'fix', 'Configure RHEL 9 to reauthenticate "sudo" commands after the specified timeout:
+If "timestamp_timeout" is set to a value other than "0" (including negative numbers), is commented out, or is missing entirely, this is a finding.)
+  desc 'fix', 'Configure RHEL 9 to reauthenticate every invocation of the "sudo" command.
 
 Add the following line to "/etc/sudoers" or a file in "/etc/sudoers.d":
 
-Defaults timestamp_timeout=0'
+Defaults timestamp_timeout=0
+
+Remove any duplicate definitions.'
   impact 0.5
+  tag check_id: 'C-61825r1262024_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000373-GPOS-00156'
   tag gid: 'V-258084'
-  tag rid: 'SV-258084r1050789_rule'
+  tag rid: 'SV-258084r1262115_rule'
   tag stig_id: 'RHEL-09-432015'
-  tag fix_id: 'F-61749r1045170_fix'
+  tag fix_id: 'F-61749r1262025_fix'
   tag cci: ['CCI-002038', 'CCI-004895']
   tag nist: ['IA-11', 'SC-11 b']
   tag 'host'
@@ -39,10 +41,10 @@ Defaults timestamp_timeout=0'
   setting_value = sudoers(input('sudoers_config_files')).settings.Defaults[setting]
 
   describe 'Sudoers configuration' do
-    it "should should set #{setting} to a non-negative number, exactly once" do
+    it "should set #{setting} to 0, exactly once" do
       expect(setting_value).to_not be_nil, "#{setting} not found inside sudoers config file(s)"
       expect(setting_value.count).to eq(1), "#{setting} set #{setting_value.count} times inside sudoers config file(s)"
-      expect(setting_value.first.to_i).to be >= 0
+      expect(Float(setting_value.first.to_s.strip, exception: false)).to eq(0), "#{setting} is set to '#{setting_value.first}', expected '0'"
     end
   end
 end

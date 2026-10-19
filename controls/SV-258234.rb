@@ -13,11 +13,11 @@ If the crypto-policies package is not installed, this is a finding.'
   desc 'fix', 'Install the crypto-policies package (if the package is not already installed) with the following command:
 
 $ sudo dnf -y install crypto-policies'
-  impact 0.5
+  impact 0.7
   tag check_id: 'C-61975r1051248_chk'
-  tag severity: 'medium'
+  tag severity: 'high'
   tag gid: 'V-258234'
-  tag rid: 'SV-258234r1051250_rule'
+  tag rid: 'SV-258234r1184292_rule'
   tag stig_id: 'RHEL-09-215100'
   tag gtitle: 'SRG-OS-000396-GPOS-00176'
   tag fix_id: 'F-61899r1051249_fix'

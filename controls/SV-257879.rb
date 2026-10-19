@@ -50,6 +50,7 @@ Encrypting a partition in an already installed system is more difficult, because
 
 To encrypt an entire partition, dedicate a partition for encryption in the partition layout.'
   impact 0.7
+  tag check_id: 'C-61620r1045453_chk'
   tag severity: 'high'
   tag gtitle: 'SRG-OS-000405-GPOS-00184'
   tag satisfies: ['SRG-OS-000185-GPOS-00079', 'SRG-OS-000404-GPOS-00183', 'SRG-OS-000405-GPOS-00184']

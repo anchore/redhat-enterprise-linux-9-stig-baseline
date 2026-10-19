@@ -23,10 +23,11 @@ If the system is in noncompliance with the organizational patching policy, this 
 
 $ sudo dnf update'
   impact 0.5
+  tag check_id: 'C-61519r1134891_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
   tag gid: 'V-257778'
-  tag rid: 'SV-257778r1134892_rule'
+  tag rid: 'SV-257778r1268251_rule'
   tag stig_id: 'RHEL-09-211015'
   tag fix_id: 'F-61443r925320_fix'
   tag cci: ['CCI-000366']

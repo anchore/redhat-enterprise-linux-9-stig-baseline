@@ -30,6 +30,7 @@ $ sudo systemctl status usbguard
 
 Note: usbguard will need to be configured to allow authorized devices once it is enabled on RHEL 9.'
   impact 0.5
+  tag check_id: 'C-61776r1014858_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000378-GPOS-00163'
   tag gid: 'V-258035'

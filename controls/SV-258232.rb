@@ -15,11 +15,11 @@ If the ipsec configuration file does not contain "include /etc/crypto-policies/b
 Add the following line to "/etc/ipsec.conf":
 
 include /etc/crypto-policies/back-ends/libreswan.config'
-  impact 0.5
+  impact 0.7
   tag check_id: 'C-61973r926681_chk'
-  tag severity: 'medium'
+  tag severity: 'high'
   tag gid: 'V-258232'
-  tag rid: 'SV-258232r1045440_rule'
+  tag rid: 'SV-258232r1268222_rule'
   tag stig_id: 'RHEL-09-671020'
   tag gtitle: 'SRG-OS-000033-GPOS-00014'
   tag fix_id: 'F-61897r926682_fix'

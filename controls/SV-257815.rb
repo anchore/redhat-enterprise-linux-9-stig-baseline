@@ -22,10 +22,11 @@ Reload the daemon for this change to take effect.
 
 $ sudo systemctl daemon-reload'
   impact 0.5
+  tag check_id: 'C-61556r1134902_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
   tag gid: 'V-257815'
-  tag rid: 'SV-257815r1134903_rule'
+  tag rid: 'SV-257815r1268251_rule'
   tag stig_id: 'RHEL-09-213100'
   tag fix_id: 'F-61480r925431_fix'
   tag cci: ['CCI-000366']

@@ -27,8 +27,10 @@ option:
 
     The audit daemon must be restarted for changes to take effect.'
   impact 0.5
+  tag check_id: 'C-61910r926492_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000255-GPOS-00096'
+  tag satisfies: ['SRG-OS-000255-GPOS-00096', 'SRG-OS-000480-GPOS-00227']
   tag gid: 'V-258169'
   tag rid: 'SV-258169r991556_rule'
   tag stig_id: 'RHEL-09-653100'

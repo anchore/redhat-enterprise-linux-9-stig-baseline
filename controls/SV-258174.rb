@@ -35,6 +35,7 @@ and then update the aliases database with the command:
 
 $ sudo newaliases'
   impact 0.5
+  tag check_id: 'C-61915r926507_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000046-GPOS-00022'
   tag gid: 'V-258174'

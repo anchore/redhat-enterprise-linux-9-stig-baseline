@@ -18,14 +18,16 @@ If the "gssproxy" package is installed and is not documented with the informatio
 
 $ sudo dnf remove gssproxy'
   impact 0.5
+  tag check_id: 'C-61573r1155652_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000095-GPOS-00049'
+  tag satisfies: ['SRG-OS-000095-GPOS-00049', 'SRG-OS-000480-GPOS-00227']
   tag gid: 'V-257832'
   tag rid: 'SV-257832r1155653_rule'
   tag stig_id: 'RHEL-09-215045'
   tag fix_id: 'F-61497r925482_fix'
-  tag cci: ['CCI-000381', 'CCI-000366']
-  tag nist: ['CM-7 a', 'CM-6 b']
+  tag cci: ['CCI-000381']
+  tag nist: ['CM-7 a']
   tag 'host'
   tag 'container'
 

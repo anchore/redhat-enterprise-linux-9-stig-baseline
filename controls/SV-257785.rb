@@ -15,14 +15,16 @@ If the "ctrl-alt-del.target" is loaded and not masked, this is a finding.'
 $ sudo systemctl disable --now ctrl-alt-del.target
 $ sudo systemctl mask --now ctrl-alt-del.target'
   impact 0.7
+  tag check_id: 'C-61526r925340_chk'
   tag severity: 'high'
   tag gtitle: 'SRG-OS-000324-GPOS-00125'
+  tag satisfies: ['SRG-OS-000324-GPOS-00125', 'SRG-OS-000480-GPOS-00227']
   tag gid: 'V-257785'
   tag rid: 'SV-257785r1044833_rule'
   tag stig_id: 'RHEL-09-211050'
   tag fix_id: 'F-61450r925341_fix'
-  tag cci: ['CCI-000366', 'CCI-002235']
-  tag nist: ['CM-6 b', 'AC-6 (10)']
+  tag cci: ['CCI-002235']
+  tag nist: ['AC-6 (10)']
   tag 'host'
 
   only_if('This control is Not Applicable to containers', impact: 0.0) {

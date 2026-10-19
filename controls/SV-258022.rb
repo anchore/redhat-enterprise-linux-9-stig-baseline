@@ -30,9 +30,10 @@ Run the following command to update the database:
 
 $ sudo dconf update'
   impact 0.5
+  tag check_id: 'C-61763r1045095_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000028-GPOS-00009'
-  tag satisfies: ['SRG-OS-000029-GPOS-00010', 'SRG-OS-000031-GPOS-00012', 'SRG-OS-000480-GPOS-00227', 'SRG-OS-000028-GPOS-00009', 'SRG-OS-000030-GPOS-00011']
+  tag satisfies: ['SRG-OS-000028-GPOS-00009', 'SRG-OS-000030-GPOS-00011']
   tag gid: 'V-258022'
   tag rid: 'SV-258022r1045097_rule'
   tag stig_id: 'RHEL-09-271060'

@@ -10,10 +10,11 @@ If any files on the system do not have an assigned owner, this is a finding."
 
 $ sudo chown <user> <file>'
   impact 0.5
+  tag check_id: 'C-61672r925778_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
   tag gid: 'V-257931'
-  tag rid: 'SV-257931r991589_rule'
+  tag rid: 'SV-257931r1268251_rule'
   tag stig_id: 'RHEL-09-232255'
   tag fix_id: 'F-61596r925779_fix'
   tag cci: ['CCI-000366']

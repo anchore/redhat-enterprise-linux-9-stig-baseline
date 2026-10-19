@@ -45,7 +45,7 @@ If the "-s" option is not present in the "ExecStart" line or if the line is miss
   tag check_id: 'C-61576r1155677_chk'
   tag severity: 'high'
   tag gid: 'V-257835'
-  tag rid: 'SV-257835r1155679_rule'
+  tag rid: 'SV-257835r1268251_rule'
   tag stig_id: 'RHEL-09-215060'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
   tag fix_id: 'F-61500r1155678_fix'

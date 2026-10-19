@@ -18,10 +18,11 @@ Warning: Removal of the graphical user interface will immediately render it usel
 $ sudo dnf remove "xorg*"
 $ sudo systemctl set-default multi-user.target'
   impact 0.5
+  tag check_id: 'C-61578r1044909_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
   tag gid: 'V-257837'
-  tag rid: 'SV-257837r1044910_rule'
+  tag rid: 'SV-257837r1268251_rule'
   tag stig_id: 'RHEL-09-215070'
   tag fix_id: 'F-61502r925497_fix'
   tag cci: ['CCI-000366']

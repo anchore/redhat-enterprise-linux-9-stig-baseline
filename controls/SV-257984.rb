@@ -19,14 +19,14 @@ $ sudo systemctl restart sshd.service'
   tag check_id: 'C-61725r1014847_chk'
   tag severity: 'high'
   tag gid: 'V-257984'
-  tag rid: 'SV-257984r1045026_rule'
+  tag rid: 'SV-257984r1268229_rule'
   tag stig_id: 'RHEL-09-255040'
   tag gtitle: 'SRG-OS-000106-GPOS-00053'
   tag fix_id: 'F-61649r1045025_fix'
   tag satisfies: ['SRG-OS-000106-GPOS-00053', 'SRG-OS-000480-GPOS-00229', 'SRG-OS-000480-GPOS-00227']
   tag 'documentable'
-  tag cci: ['CCI-000366', 'CCI-000766']
-  tag nist: ['CM-6 b', 'IA-2 (2)']
+  tag cci: ['CCI-000766']
+  tag nist: ['IA-2 (2)']
   tag 'host'
   tag 'container-conditional'
 

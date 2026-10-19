@@ -22,8 +22,10 @@ Add or modify the following line in "/etc/default/grub" to ensure the configurat
 
 GRUB_CMDLINE_LINUX="pti=on"'
   impact 0.3
+  tag check_id: 'C-61536r1044844_chk'
   tag severity: 'low'
   tag gtitle: 'SRG-OS-000433-GPOS-00193'
+  tag satisfies: ['SRG-OS-000433-GPOS-00193', 'SRG-OS-000095-GPOS-00049']
   tag gid: 'V-257795'
   tag rid: 'SV-257795r1044845_rule'
   tag stig_id: 'RHEL-09-212050'

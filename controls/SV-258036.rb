@@ -18,6 +18,7 @@ If the system is virtual machine with no virtual or physical USB peripherals att
 
 $ sudo systemctl enable --now usbguard'
   impact 0.5
+  tag check_id: 'C-61777r1014860_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000378-GPOS-00163'
   tag gid: 'V-258036'

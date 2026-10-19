@@ -16,10 +16,11 @@ variable statements that reference directories other than their home directory.
     If a local interactive user requires path variables to reference a
 directory owned by the application, it must be documented with the ISSO.'
   impact 0.5
+  tag check_id: 'C-61791r1045136_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
   tag gid: 'V-258050'
-  tag rid: 'SV-258050r1045137_rule'
+  tag rid: 'SV-258050r1268251_rule'
   tag stig_id: 'RHEL-09-411055'
   tag fix_id: 'F-61715r926136_fix'
   tag cci: ['CCI-000366']

@@ -29,10 +29,11 @@ Load settings from all system configuration files with the following command:
 
 $ sudo sysctl --system'
   impact 0.5
+  tag check_id: 'C-61710r1155621_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
   tag gid: 'V-257969'
-  tag rid: 'SV-257969r1155623_rule'
+  tag rid: 'SV-257969r1268251_rule'
   tag stig_id: 'RHEL-09-253070'
   tag fix_id: 'F-61634r1155622_fix'
   tag cci: ['CCI-000366']

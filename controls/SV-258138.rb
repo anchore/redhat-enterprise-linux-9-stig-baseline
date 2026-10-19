@@ -14,10 +14,11 @@ If the "acl" rule is not being used on all uncommented selection lines in the "/
 
 If AIDE is installed, ensure the "acl" rule is present on all uncommented file and directory selection lists.'
   impact 0.3
+  tag check_id: 'C-61879r1045273_chk'
   tag severity: 'low'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
   tag gid: 'V-258138'
-  tag rid: 'SV-258138r1045274_rule'
+  tag rid: 'SV-258138r1268251_rule'
   tag stig_id: 'RHEL-09-651030'
   tag fix_id: 'F-61803r926400_fix'
   tag cci: ['CCI-000366']

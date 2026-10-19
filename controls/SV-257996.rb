@@ -30,6 +30,7 @@ For the changes to take effect, the SSH daemon must be restarted.
 
 $ sudo systemctl restart sshd.service'
   impact 0.5
+  tag check_id: 'C-61737r1134914_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000126-GPOS-00066'
   tag satisfies: ['SRG-OS-000163-GPOS-00072', 'SRG-OS-000126-GPOS-00066', 'SRG-OS-000279-GPOS-00109', 'SRG-OS-000395-GPOS-00175']
@@ -37,8 +38,8 @@ $ sudo systemctl restart sshd.service'
   tag rid: 'SV-257996r1134915_rule'
   tag stig_id: 'RHEL-09-255100'
   tag fix_id: 'F-61661r1045054_fix'
-  tag cci: ['CCI-001133', 'CCI-000879', 'CCI-002361', 'CCI-002891']
-  tag nist: ['SC-10', 'MA-4 e', 'AC-12', 'MA-4 (7)']
+  tag cci: ['CCI-001133', 'CCI-002361', 'CCI-002891']
+  tag nist: ['SC-10', 'AC-12', 'MA-4 (7)']
   tag 'host'
   tag 'container-conditional'
 

@@ -14,6 +14,7 @@ If "/var/log" does not have an owner of "root", this is a finding.'
 
 $ sudo chown root /var/log'
   impact 0.5
+  tag check_id: 'C-61655r1044968_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000206-GPOS-00084'
   tag gid: 'V-257914'

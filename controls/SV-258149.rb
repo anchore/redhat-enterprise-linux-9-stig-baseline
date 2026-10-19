@@ -24,7 +24,25 @@ $ sudo grep -rq 'type="omfwd"' /etc/rsyslog.conf /etc/rsyslog.d/
 If a remote server is not configured, or the line is commented out, ask the system administrator (SA) to indicate how the audit logs are off-loaded to a different system or media.
 
 If there is no evidence that the audit logs are being off-loaded to another system or media, this is a finding.)
+  desc 'fix', %q(Configure RHEL 9 to off-load audit records onto a different system or media from the system being audited via TCP using rsyslog by specifying the remote logging server in "/etc/rsyslog.conf" or "/etc/rsyslog.d/[customfile].conf" with the name or IP address of the log aggregation server. The following are examples of the configuration for the legacy syntax and for the newer Rainer script. Only one should be used.
+
+Using legacy '@host:port" syntax example:
+*.* @@[remoteloggingserver]:[port]
+
+Using Rainer script example:
+action(
+    type="omfwd"
+    target="logserver.example.com"
+    port="514"
+    protocol="tcp"
+    action.resumeRetryCount="-1"
+    queue.type="linkedList"
+    que.size="10000"
+)
+
+Note: The Rainer Script above does not contain the required encryption settings.)
   impact 0.5
+  tag check_id: 'C-61890r1155578_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000479-GPOS-00224'
   tag satisfies: ['SRG-OS-000342-GPOS-00133', 'SRG-OS-000479-GPOS-00224', 'SRG-OS-000480-GPOS-00227']
@@ -32,8 +50,8 @@ If there is no evidence that the audit logs are being off-loaded to another syst
   tag rid: 'SV-258149r1155580_rule'
   tag stig_id: 'RHEL-09-652055'
   tag fix_id: 'F-61814r1155579_fix'
-  tag cci: ['CCI-001851', 'CCI-000366']
-  tag nist: ['AU-4 (1)', 'CM-6 b']
+  tag cci: ['CCI-001851']
+  tag nist: ['AU-4 (1)']
   tag 'host'
 
   only_if('This control is Not Applicable to containers', impact: 0.0) {

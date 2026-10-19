@@ -10,10 +10,11 @@ If a ".shosts" file is found, this is a finding.'
 
 $ sudo rm /[path]/[to]/[file]/.shosts'
   impact 0.7
+  tag check_id: 'C-61697r925853_chk'
   tag severity: 'high'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
   tag gid: 'V-257956'
-  tag rid: 'SV-257956r991589_rule'
+  tag rid: 'SV-257956r1268251_rule'
   tag stig_id: 'RHEL-09-252075'
   tag fix_id: 'F-61621r925854_fix'
   tag cci: ['CCI-000366']

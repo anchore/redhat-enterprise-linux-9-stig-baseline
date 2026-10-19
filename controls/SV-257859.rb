@@ -11,10 +11,11 @@ If a file system found in "/etc/fstab" refers to removable media and it does not
   desc 'fix', 'Configure the "/etc/fstab" to use the "nosuid" option on
 file systems that are associated with removable media.'
   impact 0.5
+  tag check_id: 'C-61600r925562_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
   tag gid: 'V-257859'
-  tag rid: 'SV-257859r991589_rule'
+  tag rid: 'SV-257859r1268251_rule'
   tag stig_id: 'RHEL-09-231090'
   tag fix_id: 'F-61524r925563_fix'
   tag cci: ['CCI-000366']

@@ -34,6 +34,7 @@ Update the system databases:
 
 $ sudo dconf update)
   impact 0.5
+  tag check_id: 'C-61762r926048_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000028-GPOS-00009'
   tag satisfies: ['SRG-OS-000028-GPOS-00009', 'SRG-OS-000030-GPOS-00011']

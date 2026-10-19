@@ -33,10 +33,11 @@ Reload settings from all system configuration files with the following command:
 
 $ sudo sysctl --system'
   impact 0.5
+  tag check_id: 'C-61709r1155746_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
   tag gid: 'V-257968'
-  tag rid: 'SV-257968r1155748_rule'
+  tag rid: 'SV-257968r1268251_rule'
   tag stig_id: 'RHEL-09-253065'
   tag fix_id: 'F-61633r1155747_fix'
   tag cci: ['CCI-000366']

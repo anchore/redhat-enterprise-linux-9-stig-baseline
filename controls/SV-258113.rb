@@ -16,6 +16,7 @@ Add or update the following line in the "/etc/security/pwquality.conf" file or a
 
 maxclassrepeat = 4'
   impact 0.5
+  tag check_id: 'C-61854r1045230_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000072-GPOS-00040'
   tag gid: 'V-258113'

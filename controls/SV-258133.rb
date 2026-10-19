@@ -26,6 +26,7 @@ Edit the file "/etc/sssd/sssd.conf" or a configuration file in "/etc/sssd/conf.d
 
 offline_credentials_expiration = 1'
   impact 0.5
+  tag check_id: 'C-61874r1045261_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000383-GPOS-00166'
   tag gid: 'V-258133'

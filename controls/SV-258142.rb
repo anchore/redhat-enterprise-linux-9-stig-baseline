@@ -12,10 +12,11 @@ If the rsyslog service is not active, this is a finding.'
 
 $ sudo systemctl enable --now rsyslog'
   impact 0.5
+  tag check_id: 'C-61883r926411_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
   tag gid: 'V-258142'
-  tag rid: 'SV-258142r991589_rule'
+  tag rid: 'SV-258142r1268251_rule'
   tag stig_id: 'RHEL-09-652020'
   tag fix_id: 'F-61807r926412_fix'
   tag cci: ['CCI-000366']

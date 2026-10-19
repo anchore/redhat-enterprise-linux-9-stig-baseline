@@ -13,14 +13,16 @@ Note: Options displayed for mount may differ.
 If no line is returned, this is a finding.'
   desc 'fix', 'Migrate the system audit data path onto a separate file system.'
   impact 0.3
+  tag check_id: 'C-61588r1044923_chk'
   tag severity: 'low'
   tag gtitle: 'SRG-OS-000341-GPOS-00132'
+  tag satisfies: ['SRG-OS-000341-GPOS-00132', 'SRG-OS-000480-GPOS-00227']
   tag gid: 'V-257847'
   tag rid: 'SV-257847r1044924_rule'
   tag stig_id: 'RHEL-09-231030'
   tag fix_id: 'F-61512r925527_fix'
-  tag cci: ['CCI-000366', 'CCI-001849']
-  tag nist: ['CM-6 b', 'AU-4']
+  tag cci: ['CCI-001849']
+  tag nist: ['AU-4']
   tag 'host'
 
   only_if('This control is Not Applicable to containers', impact: 0.0) {

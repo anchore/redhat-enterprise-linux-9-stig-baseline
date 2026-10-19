@@ -6,7 +6,7 @@ Synchronizing internal information system clocks provides uniformity of time sta
 
 Depending on the infrastructure being used the "pool" directive may not be supported.
 
-Authoritative time sources include the United States Naval Observatory (USNO) time servers, a time server designated for the appropriate DOD network (NIPRNet/SIPRNet), and/or the Global Positioning System (GPS).'
+Authoritative time sources include the United States Naval Observatory (USNO) time servers, a time server designated for the appropriate DoW network (NIPRNet/SIPRNet), and/or the Global Positioning System (GPS).'
   desc 'check', 'Verify RHEL 9 is securely comparing internal information system clocks at least every 24 hours with an NTP server with the following commands:
 
 $ sudo grep maxpoll /etc/chrony.conf
@@ -15,21 +15,22 @@ server 0.us.pool.ntp.mil iburst maxpoll 16
 
 If the "maxpoll" option is set to a number greater than 16 or the line is commented out, this is a finding.
 
-Verify the "chrony.conf" file is configured to an authoritative DOD time source by running the following command:
+Verify the "chrony.conf" file is configured to an authoritative DoW time source by running the following command:
 
 $ sudo grep -i server /etc/chrony.conf
 server 0.us.pool.ntp.mil
 
-If the parameter "server" is not set or is not set to an authoritative DOD time source, this is a finding.'
+If the parameter "server" is not set or is not set to an authoritative DoW time source, this is a finding.'
   desc 'fix', 'Configure RHEL 9 to securely compare internal information system clocks at least every 24 hours with an NTP server by adding/modifying the following line in the /etc/chrony.conf file.
 
 server [ntp.server.name] iburst maxpoll 16'
   impact 0.5
+  tag check_id: 'C-61686r1262069_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000355-GPOS-00143'
   tag satisfies: ['SRG-OS-000355-GPOS-00143', 'SRG-OS-000356-GPOS-00144', 'SRG-OS-000359-GPOS-00146']
   tag gid: 'V-257945'
-  tag rid: 'SV-257945r1038944_rule'
+  tag rid: 'SV-257945r1262140_rule'
   tag stig_id: 'RHEL-09-252020'
   tag fix_id: 'F-61610r925821_fix'
   tag cci: ['CCI-001891', 'CCI-001890', 'CCI-002046', 'CCI-004923', 'CCI-004926']

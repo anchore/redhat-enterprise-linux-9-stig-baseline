@@ -12,10 +12,11 @@ $ grep nfs /etc/fstab
 If the system is mounting file systems via NFS and the "noexec" option is missing, this is a finding.'
   desc 'fix', 'Update each NFS mounted file system to use the "noexec" option on file systems that are being imported via NFS.'
   impact 0.5
+  tag check_id: 'C-61596r1044935_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
   tag gid: 'V-257855'
-  tag rid: 'SV-257855r1044936_rule'
+  tag rid: 'SV-257855r1268251_rule'
   tag stig_id: 'RHEL-09-231070'
   tag fix_id: 'F-61520r925551_fix'
   tag cci: ['CCI-000366']

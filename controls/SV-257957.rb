@@ -2,7 +2,7 @@ control 'SV-257957' do
   title 'RHEL 9 must be configured to use TCP syncookies.'
   desc 'Preventing unauthorized information transfers mitigates the risk of information, including encrypted representations of information, produced by the actions of prior users/roles (or the actions of processes acting on behalf of prior users/roles) from being available to any current users/roles (or current processes) that obtain access to shared system resources (e.g., registers, main memory, hard disks) after those resources have been released back to information systems. The control of information in shared resources is also commonly referred to as object reuse and residual information protection.
 
-This requirement generally applies to the design of an information technology product, but it can also apply to the configuration of particular information system components that are, or use, such products. This can be verified by acceptance/validation processes in DOD or other government agencies.
+This requirement generally applies to the design of an information technology product, but it can also apply to the configuration of particular information system components that are, or use, such products. This can be verified by acceptance/validation processes in DoW or other government agencies.
 
 There may be shared resources with configurable protections (e.g., files in storage) that may be assessed on specific information system components.
 
@@ -40,14 +40,14 @@ $ sudo sysctl --system'
   tag check_id: 'C-61698r1155616_chk'
   tag severity: 'medium'
   tag gid: 'V-257957'
-  tag rid: 'SV-257957r1155618_rule'
+  tag rid: 'SV-257957r1268251_rule'
   tag stig_id: 'RHEL-09-253010'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
   tag fix_id: 'F-61622r1155617_fix'
   tag satisfies: ['SRG-OS-000480-GPOS-00227', 'SRG-OS-000420-GPOS-00186', 'SRG-OS-000142-GPOS-00071']
   tag 'documentable'
-  tag cci: ['CCI-000366', 'CCI-001095', 'CCI-002385']
-  tag nist: ['CM-6 b', 'SC-5 (2)', 'SC-5 a']
+  tag cci: ['CCI-001095', 'CCI-002385']
+  tag nist: ['SC-5 (2)', 'SC-5 a']
   tag 'host'
 
   only_if('Control not applicable within a container', impact: 0.0) {

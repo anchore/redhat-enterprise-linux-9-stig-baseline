@@ -1,12 +1,12 @@
 control 'SV-258089' do
   title 'RHEL 9 fapolicy module must be installed.'
-  desc 'The organization must identify authorized software programs and permit execution of authorized software. The process used to identify software programs that are authorized to execute on organizational information systems is commonly referred to as allowlisting.
+  desc 'The organization must identify authorized software programs and permit execution of authorized software. The process used to identify software programs that are authorized to execute on organizational information systems is commonly referred to as allow listing.
 
-Utilizing an allowlist provides a configuration management method for allowing the execution of only authorized software. Using only authorized software decreases risk by limiting the number of potential vulnerabilities. Verification of allowlisted software occurs prior to execution or at system startup.
+Utilizing an allow list provides a configuration management method for allowing the execution of only authorized software. Using only authorized software decreases risk by limiting the number of potential vulnerabilities. Verification of allow listed software occurs prior to execution or at system startup.
 
 User home directories/folders may contain information of a sensitive nature. Nonprivileged users should coordinate any sharing of information with an SA through shared resources.
 
-RHEL 9 ships with many optional packages. One such package is a file access policy daemon called "fapolicyd". "fapolicyd" is a userspace daemon that determines access rights to files based on attributes of the process and file. It can be used to either blocklist or allowlist processes or file access.
+RHEL 9 ships with many optional packages. One such package is a file access policy daemon called "fapolicyd". "fapolicyd" is a userspace daemon that determines access rights to files based on attributes of the process and file. It can be used to either blocklist or allow list processes or file access.
 
 Proceed with caution with enforcing the use of this daemon. Improper configuration may render the system nonfunctional. The "fapolicyd" API is not namespace aware and can cause issues when launching or running containers.'
   desc 'check', 'Verify that RHEL 9 fapolicyd package is installed with the following command:
@@ -22,9 +22,10 @@ If the "fapolicyd" package is not installed, this is a finding.'
 
 $ sudo dnf install fapolicyd'
   impact 0.5
+  tag check_id: 'C-61830r1045178_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000370-GPOS-00155'
-  tag satisfies: ['SRG-OS-000368-GPOS-00154', 'SRG-OS-000370-GPOS-00155', 'SRG-OS-000480-GPOS-00232']
+  tag satisfies: ['SRG-OS-000370-GPOS-00155', 'SRG-OS-000368-GPOS-00154']
   tag gid: 'V-258089'
   tag rid: 'SV-258089r1045179_rule'
   tag stig_id: 'RHEL-09-433010'

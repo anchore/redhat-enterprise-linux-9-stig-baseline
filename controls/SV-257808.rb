@@ -18,6 +18,7 @@ If the command does not return any output, or the lines are commented out, and u
 install tipc /bin/false
 blacklist tipc'
   impact 0.5
+  tag check_id: 'C-61549r1044863_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000095-GPOS-00049'
   tag gid: 'V-257808'

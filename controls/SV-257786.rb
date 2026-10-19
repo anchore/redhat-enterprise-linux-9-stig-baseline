@@ -21,14 +21,16 @@ If the "debug-shell.service" is loaded and not masked, this is a finding.'
 $ sudo systemctl disable --now debug-shell.service
 $ sudo systemctl mask --now debug-shell.service'
   impact 0.5
+  tag check_id: 'C-61527r925343_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000324-GPOS-00125'
+  tag satisfies: ['SRG-OS-000324-GPOS-00125', 'SRG-OS-000480-GPOS-00227']
   tag gid: 'V-257786'
   tag rid: 'SV-257786r1044834_rule'
   tag stig_id: 'RHEL-09-211055'
   tag fix_id: 'F-61451r943025_fix'
-  tag cci: ['CCI-000366', 'CCI-002235']
-  tag nist: ['CM-6 b', 'AC-6 (10)']
+  tag cci: ['CCI-002235']
+  tag nist: ['AC-6 (10)']
   tag 'host'
 
   only_if('This control is Not Applicable to containers', impact: 0.0) {

@@ -22,6 +22,7 @@ If the noexec option is present on the kernel command line, update the GRUB 2 bo
 
 $ sudo grubby --update-kernel=ALL --remove-args=noexec'
   impact 0.5
+  tag check_id: 'C-61558r1069381_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000433-GPOS-00192'
   tag gid: 'V-257817'

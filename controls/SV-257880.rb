@@ -25,6 +25,7 @@ If the command does not return any output or the lines are commented out, and us
 install cramfs /bin/false
 blacklist cramfs'
   impact 0.3
+  tag check_id: 'C-61621r1044949_chk'
   tag severity: 'low'
   tag gtitle: 'SRG-OS-000095-GPOS-00049'
   tag gid: 'V-257880'

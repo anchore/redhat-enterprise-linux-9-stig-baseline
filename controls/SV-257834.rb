@@ -27,14 +27,16 @@ If the "tuned" package is installed and is not documented with the information s
 
 $ sudo dnf remove tuned'
   impact 0.5
+  tag check_id: 'C-61575r1044903_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000095-GPOS-00049'
+  tag satisfies: ['SRG-OS-000095-GPOS-00049', 'SRG-OS-000480-GPOS-00227']
   tag gid: 'V-257834'
   tag rid: 'SV-257834r1044904_rule'
   tag stig_id: 'RHEL-09-215055'
   tag fix_id: 'F-61499r925488_fix'
-  tag cci: ['CCI-000366', 'CCI-000381']
-  tag nist: ['CM-6 b', 'CM-7 a']
+  tag cci: ['CCI-000381']
+  tag nist: ['CM-7 a']
   tag 'host'
   tag 'container'
 

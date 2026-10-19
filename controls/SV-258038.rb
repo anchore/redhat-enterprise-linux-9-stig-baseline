@@ -22,6 +22,7 @@ Note: This command must be run from a root shell and will create an allow list f
 
 Note: Enabling and starting usbguard without properly configuring it for an individual system will immediately prevent any access over a usb device such as a keyboard or mouse.'
   impact 0.5
+  tag check_id: 'C-61779r1045126_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000378-GPOS-00163'
   tag gid: 'V-258038'

@@ -15,6 +15,7 @@ file not owned by "root".
 
     $ sudo chown root [FILE]'
   impact 0.5
+  tag check_id: 'C-61659r1044976_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000259-GPOS-00100'
   tag gid: 'V-257918'

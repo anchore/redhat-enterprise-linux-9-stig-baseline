@@ -10,10 +10,11 @@ If a "shosts.equiv" file is found, this is a finding.'
 
 $ sudo rm /[path]/[to]/[file]/shosts.equiv'
   impact 0.7
+  tag check_id: 'C-61696r925850_chk'
   tag severity: 'high'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
   tag gid: 'V-257955'
-  tag rid: 'SV-257955r991589_rule'
+  tag rid: 'SV-257955r1268251_rule'
   tag stig_id: 'RHEL-09-252070'
   tag fix_id: 'F-61620r925851_fix'
   tag cci: ['CCI-000366']

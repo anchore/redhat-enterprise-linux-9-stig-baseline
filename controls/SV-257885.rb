@@ -14,6 +14,7 @@ If "/var/log" does not have a mode of "0755" or less permissive, this is a findi
 
 $ sudo chmod 0755 /var/log'
   impact 0.5
+  tag check_id: 'C-61626r1044952_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000206-GPOS-00084'
   tag gid: 'V-257885'

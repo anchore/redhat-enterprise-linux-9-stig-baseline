@@ -15,19 +15,20 @@ $ awk -F: '($3>=1000)&&($1!="nobody"){print $1 ":" $3}' /etc/passwd
 If any interactive users do not have a home directory assigned, this is a finding.)
   desc 'fix', 'Create home directories to all local interactive users that currently do not have a home directory assigned. Use the following commands to create the user home directory assigned in "/etc/ passwd":
 
-Note: The example will be for the user wadea, who has a home directory of "/home/wadea", a user identifier (UID) of "wadea", and a group identifier (GID) of "users assigned" in "/etc/passwd".
+Note: The example will be for the user disauser, who has a home directory of "/home/disauser", a user identifier (UID) of "disauser", and a group identifier (GID) of "users assigned" in "/etc/passwd".
 
-$ sudo mkdir /home/wadea
-$ sudo chown wadea /home/wadea
-$ sudo chgrp users /home/wadea
-$ sudo chmod 0750 /home/wadea'
+$ sudo mkdir /home/disauser
+$ sudo chown disauser /home/disauser
+$ sudo chgrp users /home/disauser
+$ sudo chmod 0750 /home/disauser'
   impact 0.5
+  tag check_id: 'C-61793r1155586_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
   tag gid: 'V-258052'
-  tag rid: 'SV-258052r1155588_rule'
+  tag rid: 'SV-258052r1268251_rule'
   tag stig_id: 'RHEL-09-411065'
-  tag fix_id: 'F-61717r1155587_fix'
+  tag fix_id: 'F-61717r1184314_fix'
   tag cci: ['CCI-000366']
   tag nist: ['CM-6 b']
   tag 'host'

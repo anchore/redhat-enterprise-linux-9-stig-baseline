@@ -12,10 +12,11 @@ $ grep nfs /etc/fstab
 If the system is mounting file systems via NFS and the "nosuid" option is missing, this is a finding.'
   desc 'fix', 'Update each NFS mounted file system to use the "nosuid" option on file systems that are being imported via NFS.'
   impact 0.5
+  tag check_id: 'C-61597r1044937_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
   tag gid: 'V-257856'
-  tag rid: 'SV-257856r1044938_rule'
+  tag rid: 'SV-257856r1268251_rule'
   tag stig_id: 'RHEL-09-231075'
   tag fix_id: 'F-61521r925554_fix'
   tag cci: ['CCI-000366']

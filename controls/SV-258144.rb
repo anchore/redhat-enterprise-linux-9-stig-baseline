@@ -18,10 +18,11 @@ The "rsyslog" service must be restarted for the changes to take effect with the 
 
 $ sudo systemctl restart rsyslog.service'
   impact 0.5
+  tag check_id: 'C-61885r1045284_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000032-GPOS-00013'
   tag gid: 'V-258144'
-  tag rid: 'SV-258144r1045286_rule'
+  tag rid: 'SV-258144r1268219_rule'
   tag stig_id: 'RHEL-09-652030'
   tag fix_id: 'F-61809r1045285_fix'
   tag cci: ['CCI-000067']

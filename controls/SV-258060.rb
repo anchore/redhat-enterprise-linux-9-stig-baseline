@@ -14,9 +14,9 @@ Add/modify the "/etc/security/faillock.conf" file to match the following line:
 
 dir = /var/log/faillock'
   impact 0.5
+  tag check_id: 'C-61801r1045149_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000021-GPOS-00005'
-  tag satisfies: ['SRG-OS-000021-GPOS-00005', 'SRG-OS-000329-GPOS-00128']
   tag gid: 'V-258060'
   tag rid: 'SV-258060r1045150_rule'
   tag stig_id: 'RHEL-09-411105'

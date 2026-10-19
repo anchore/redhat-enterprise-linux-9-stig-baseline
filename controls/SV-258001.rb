@@ -22,10 +22,11 @@ Restart the SSH daemon for the changes to take effect:
 
 $ sudo systemctl restart sshd.service'
   impact 0.5
+  tag check_id: 'C-61742r925988_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
   tag gid: 'V-258001'
-  tag rid: 'SV-258001r991589_rule'
+  tag rid: 'SV-258001r1268251_rule'
   tag stig_id: 'RHEL-09-255125'
   tag fix_id: 'F-61666r925989_fix'
   tag cci: ['CCI-000366']

@@ -1,7 +1,9 @@
+- name: augenrules_load
+  command: augenrules --load
 - name: dconf_update
   command: dconf update
 - name: auditd_restart
-  command: /usr/sbin/service auditd restart
+  command: service auditd restart
 - name: ssh_restart
   service:
     name: sshd
@@ -25,6 +27,8 @@
     state: restarted
 - name: with_faillock_enable
   command: authselect enable-feature with-faillock
+  failed_when: false
 - name: do_reboot
   reboot:
     pre_reboot_delay: 60
+  when: ansible_connection != "local"

@@ -16,6 +16,7 @@ If there is no evidence that real-time alerts are configured on the system, this
 
 space_left_action = email'
   impact 0.5
+  tag check_id: 'C-61898r926456_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000343-GPOS-00134'
   tag gid: 'V-258157'

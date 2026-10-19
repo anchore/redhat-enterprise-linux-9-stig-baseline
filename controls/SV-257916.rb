@@ -14,6 +14,7 @@ If "/var/log/messages" does not have an owner of "root", this is a finding.'
 
 $ sudo chown root /var/log/messages'
   impact 0.5
+  tag check_id: 'C-61657r1101915_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000206-GPOS-00084'
   tag gid: 'V-257916'

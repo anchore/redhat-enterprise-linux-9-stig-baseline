@@ -16,10 +16,11 @@ Add or modify the following line in /etc/systemd/coredump.conf:
 
 Storage=none'
   impact 0.5
+  tag check_id: 'C-61554r1134898_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
   tag gid: 'V-257813'
-  tag rid: 'SV-257813r1134899_rule'
+  tag rid: 'SV-257813r1268251_rule'
   tag stig_id: 'RHEL-09-213090'
   tag fix_id: 'F-61478r925425_fix'
   tag cci: ['CCI-000366']

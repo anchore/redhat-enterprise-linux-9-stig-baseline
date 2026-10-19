@@ -2,7 +2,7 @@ control 'SV-257991' do
   title 'The RHEL 9 SSH server must be configured to use only Message Authentication Codes (MACs) employing FIPS 140-3 validated cryptographic hash algorithms to protect the confidentiality of SSH server connections.'
   desc 'Without cryptographic integrity protections, information can be altered by unauthorized users without detection.
 
-Remote access (e.g., RDP) is access to DOD nonpublic information systems by an authorized user (or an information system) communicating through an external, nonorganization-controlled network. Remote access methods include, for example, dial-up, broadband, and wireless.
+Remote access (e.g., RDP) is access to DoW nonpublic information systems by an authorized user (or an information system) communicating through an external, nonorganization-controlled network. Remote access methods include, for example, dial-up, broadband, and wireless.
 
 Cryptographic mechanisms used for protecting the integrity of information include, for example, signed hash functions using asymmetric cryptography enabling distribution of the public key to verify the hash information while maintaining the confidentiality of the secret key used to generate the hash.
 
@@ -29,12 +29,12 @@ $ sudo update-crypto-policies --set FIPS
 Setting system policy to FIPS
 
 Note: Systemwide crypto policies are applied on application startup. It is recommended to restart the system for the change of policies to fully take place.'
-  impact 0.5
-  tag severity: 'medium'
+  impact 0.7
+  tag check_id: 'C-61732r1051244_chk'
+  tag severity: 'high'
   tag gtitle: 'SRG-OS-000250-GPOS-00093'
-  tag satisfies: ['SRG-OS-000250-GPOS-00093', 'SRG-OS-000393-GPOS-00173', 'SRG-OS-000394-GPOS-00174', 'SRG-OS-000125-GPOS-00065']
   tag gid: 'V-257991'
-  tag rid: 'SV-257991r1051246_rule'
+  tag rid: 'SV-257991r1268237_rule'
   tag stig_id: 'RHEL-09-255075'
   tag fix_id: 'F-61656r1051245_fix'
   tag cci: ['CCI-001453']

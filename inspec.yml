@@ -4,7 +4,7 @@ maintainer: MITRE SAF Team
 copyright: MITRE
 license: Apache-2.0
 summary: "InSpec profile aligned to DISA STIG for RHEL9"
-version: 2.7.2
+version: 2.10.0
 # NOTE: for testing with test-kitchen, put back to ">= 6.0" when finished
 inspec_version: ">= 5.0"
 
@@ -95,13 +95,13 @@ inputs:
   - name: ssh_private_key_mode
     description: All private ssh keyfiles on the filesystem should be equal or less permissive than this octet
     type: String
-    value: '0640'
+    value: '0600'
 
   # SV-258171
   - name: audit_conf_mode
     description: All audit config files on the filesystem should be equal or less permissive than this octet
     type: String
-    value: '0640'
+    value: '0600'
 
   # SV-257887
   - name: audit_tool_mode
@@ -109,7 +109,7 @@ inputs:
     type: String
     value: '0755'
 
-  # SV-257888, SV-257890, SV-257891, SV-257892, SV-257893, SV-257894, SV-257895, SV-257896, SV-257897, SV-257933, SV-257934, SV-257999, SV-258172
+  # SV-257888, SV-257890, SV-257891, SV-257892, SV-257893, SV-257894, SV-257895, SV-257896, SV-257897, SV-257933, SV-257934, SV-257999
   - name: expected_modes
     description: Expected modes of system files and/or directories
     type: Hash
@@ -164,7 +164,7 @@ inputs:
     type: String
     value: "usbguard"
 
-  # SV-257978, SV-257987, SV-257996, SV-258003
+  # SV-257978, SV-257996, SV-258003
   - name: allow_container_openssh_server
     description: "If the OpenSSH Server has been approved outside standard container guidance to default transprots"
     type: Boolean
@@ -210,7 +210,7 @@ inputs:
   - name: pass_max_days
     description: "The maximum password lifetime restriction in days"
     type: Numeric
-    value: 60
+    value: 180
 
   # SV-257843
   - name: exempt_separate_filesystem
@@ -218,7 +218,7 @@ inputs:
     type: Boolean
     value: false
 
-  # SV-257778, SV-257930, SV-257931, SV-258062
+  # SV-257778, SV-257930, SV-257931
   - name: disable_slow_controls
     description: Controls that are known to consistently have long run times can be disabled with this attribute
     type: Boolean
@@ -230,7 +230,7 @@ inputs:
     type: Boolean
     value: false
 
-  # SV-257782, SV-258230, SV-258236, SV-258237
+  # SV-257782, SV-258230, SV-258236
   - name: use_fips
     description: "'(boolean)' Set to true if the system is required to use FIPS Encryption"
     type: Boolean
@@ -241,12 +241,6 @@ inputs:
     description: "'(boolean) Set to true if the system is exempt from using Data at Rest"
     type: Boolean
     value: false
-
-  # SV-258241
-  - name: system_wide_crypto_policy
-    description: The system wide crypto policy
-    type: String
-    value: 'FIPS'
 
   # SV-258091
   - name: min_retry
@@ -312,7 +306,7 @@ inputs:
     value:
       - root
 
-  # SV-257843, SV-257889, SV-258046, SV-258048, SV-258050, SV-258051
+  # SV-257843, SV-257889, SV-258048, SV-258050, SV-258051
   - name: non_interactive_shells
     description: These shells do not allow a user to login
     type: Array
@@ -547,12 +541,6 @@ inputs:
     type: Numeric
     value: 0
 
-  # SV-258066
-  - name: system_activity_timeout
-    description: The expected maximum delay in seconds before the system will lock the session
-    type: Numeric
-    value: 600
-
   # SV-258060
   - name: log_directory
     description: Documented tally log directory
@@ -564,18 +552,6 @@ inputs:
     description: all network connections associated with SSH traffic are terminated at the end of the session or after 10 minutes of inactivity
     type: Numeric
     value: 1
-
-  # SV-257780
-  - name: linux_threat_prevention_package
-    description: Endpoint Security Linux Threat Prevention Tool Package
-    type: String
-    value: mcafeetp
-
-  # SV-257780
-  - name: linux_threat_prevention_service
-    description: Endpoint Security Linux Threat Prevention Tool Service
-    type: String
-    value: mfetpd
 
   # SV-257837
   - name: remove_xorg_x11_server_packages
@@ -768,14 +744,6 @@ inputs:
       nodev: false
       nosuid: false
       noexec: false
-      
-  - name: mount_var_options
-    description: rhel_09_231140 - RHEL 9 must mount /var with the (nodev|nosuid|noexec) option.
-    type: Hash
-    value:
-      nodev: true
-      nosuid: true
-      noexec: true
 
   # SV-258080
   - name: non_default_tally_dir
@@ -907,12 +875,6 @@ inputs:
     type: Boolean
     value: false
   
-  # SV-257836
-  - name: quagga_required
-    description: Set to true if there is a documented requirement for the target system to use quagga
-    type: Boolean
-    value: false
-
   # SV-257935
   - name: alternate_firewall_tool
     description: Alternate firewall tool (other than firewalld) in use for the system - leave blank if using default OS tools
@@ -930,7 +892,7 @@ inputs:
   # If you need to override these values, do so via adding the desired key/value to
   # the `audit_rule_keynames_overrides` input instead -- overriding `audit_rule_keynames`
   # directly will lose the values for any key you do not explictly define.
-  # SV-258176, SV-258177, SV-258178, SV-258179, SV-258180, SV-258181, SV-258182, SV-258183, SV-258184, SV-258185, SV-258186, SV-258187, SV-258188, SV-258189, SV-258190, SV-258191, SV-258192, SV-258193, SV-258194, SV-258195, SV-258196, SV-258197, SV-258198, SV-258199, SV-258200, SV-258201, SV-258202, SV-258203, SV-258204, SV-258205, SV-258206, SV-258207, SV-258208, SV-258209, SV-258210, SV-258211, SV-258212, SV-258213, SV-258214, SV-258215, SV-258216, SV-258217, SV-258218, SV-258219, SV-258220, SV-258221, SV-258222, SV-258223, SV-258224, SV-258225, SV-258226, SV-279936
+  # SV-258176, SV-258177, SV-258178, SV-258179, SV-258180, SV-258181, SV-258182, SV-258183, SV-258184, SV-258185, SV-258186, SV-258187, SV-258188, SV-258189, SV-258190, SV-258191, SV-258192, SV-258193, SV-258194, SV-258195, SV-258196, SV-258197, SV-258198, SV-258199, SV-258200, SV-258201, SV-258202, SV-258203, SV-258204, SV-258205, SV-258206, SV-258207, SV-258208, SV-258209, SV-258210, SV-258211, SV-258212, SV-258213, SV-258214, SV-258215, SV-258216, SV-258217, SV-258218, SV-258219, SV-258220, SV-258221, SV-258222, SV-258223, SV-258224, SV-258225, SV-279936, SV-288832
   - name: audit_rule_keynames
     description: The audit rules to be applied to the system
     type: Hash
@@ -953,7 +915,7 @@ inputs:
       '/usr/bin/chage'                : 'privileged-chage',
       '/usr/bin/chcon'                : 'perm_mod',
       '/usr/bin/ssh-agent'            : 'privileged-ssh',
-      '/usr/bin/passwd'               : 'privileged-passwd',
+      '/usr/bin/passwd'               : 'identity',
       '/usr/bin/mount'                : 'privileged-mount',
       '/usr/bin/umount'               : 'privileged-mount',
       'mount'                         : 'privileged-mount',
@@ -977,7 +939,7 @@ inputs:
       'rmdir'                         : 'delete',
       'renameat'                      : 'delete',
       'unlinkat'                      : 'delete',
-      '/usr/bin/gpasswd'              : 'privileged-gpasswd',
+      '/usr/bin/gpasswd'              : 'identity',
       'delete_module'                 : 'module_chng',
       '/usr/bin/crontab'              : 'privileged-crontab',
       '/usr/bin/chsh'                 : 'priv_cmd',
@@ -996,6 +958,7 @@ inputs:
       'fchmodat'                      : 'perm_mod',
       '/usr/bin/sudo'                 : 'priv_cmd',
       '/usr/sbin/usermod'             : 'privileged-usermod',
+      '/usr/sbin/useradd'             : 'privileged-useradd',
       '/usr/bin/chacl'                : 'perm_mod',
       '/usr/bin/kmod'                 : 'modules',
       '/var/log/faillock'             : 'logins',
@@ -1006,9 +969,7 @@ inputs:
       '/usr/sbin/reboot'              : 'privileged-reboot',
       '/usr/sbin/shutdown'            : 'privileged-shutdown',
       'umount2'                       : 'perm_mod',
-      '/var/log/tallylog'             : 'logins',
-      '/etc/cron.d'                   : 'cronjobs',
-      '/var/spool/cron'               : 'cronjobs'
+      'crond_t'                       : 'cron_exec'
     }
 
   # Override values for expected keynames for all audit rules
@@ -1019,7 +980,7 @@ inputs:
   # {
   #   'execve': 'my_org_specific_keyname_for_auditing_execve'
   # }
-  # SV-258176, SV-258177, SV-258178, SV-258179, SV-258180, SV-258181, SV-258182, SV-258183, SV-258184, SV-258185, SV-258186, SV-258187, SV-258188, SV-258189, SV-258190, SV-258191, SV-258192, SV-258193, SV-258194, SV-258195, SV-258196, SV-258197, SV-258198, SV-258199, SV-258200, SV-258201, SV-258202, SV-258203, SV-258204, SV-258205, SV-258206, SV-258207, SV-258208, SV-258209, SV-258210, SV-258211, SV-258212, SV-258213, SV-258214, SV-258215, SV-258216, SV-258217, SV-258218, SV-258219, SV-258220, SV-258221, SV-258222, SV-258223, SV-258224, SV-258225, SV-258226, SV-279936
+  # SV-258176, SV-258177, SV-258178, SV-258179, SV-258180, SV-258181, SV-258182, SV-258183, SV-258184, SV-258185, SV-258186, SV-258187, SV-258188, SV-258189, SV-258190, SV-258191, SV-258192, SV-258193, SV-258194, SV-258195, SV-258196, SV-258197, SV-258198, SV-258199, SV-258200, SV-258201, SV-258202, SV-258203, SV-258204, SV-258205, SV-258206, SV-258207, SV-258208, SV-258209, SV-258210, SV-258211, SV-258212, SV-258213, SV-258214, SV-258215, SV-258216, SV-258217, SV-258218, SV-258219, SV-258220, SV-258221, SV-258222, SV-258223, SV-258224, SV-258225, SV-279936, SV-288832
   - name: audit_rule_keynames_overrides
     description: The audit rules to be applied to the system
     type: Hash
@@ -1046,14 +1007,6 @@ inputs:
     value:
       ciphers: aes256-gcm@openssh.com,aes256-ctr,aes128-gcm@openssh.com,aes128-ctr
       macs: hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,umac-128@openssh.com,hmac-sha2-512
-
-  # SV-257989
-  - name: approved_openssh_client_conf
-    description: Config values expected for openssh client (order matters, so these values are comma-delimited strings and not arrays)
-    type: Hash
-    value:
-      ciphers: aes256-gcm@openssh.com,chacha20-poly1305@openssh.com,aes256-ctr,aes128-gcm@openssh.com,aes128-ctr
-      macs: hmac-sha2-256-etm@openssh.com,hmac-sha2-256,hmac-sha2-512-etm@openssh.com,hmac-sha2-512
 
   # SV-258099, SV-258100 
   - name: password_hash_rounds

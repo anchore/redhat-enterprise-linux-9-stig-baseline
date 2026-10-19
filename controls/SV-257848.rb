@@ -11,10 +11,11 @@ Note: Options displayed for mount may differ.
 If a separate entry for "/var/tmp" is not in use, this is a finding.'
   desc 'fix', 'Migrate the "/var/tmp" path onto a separate file system.'
   impact 0.5
+  tag check_id: 'C-61589r1044925_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
   tag gid: 'V-257848'
-  tag rid: 'SV-257848r1044926_rule'
+  tag rid: 'SV-257848r1268251_rule'
   tag stig_id: 'RHEL-09-231035'
   tag fix_id: 'F-61513r925530_fix'
   tag cci: ['CCI-000366']

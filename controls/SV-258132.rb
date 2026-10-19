@@ -26,6 +26,7 @@ The "sssd" service must be restarted for the changes to take effect. To restart 
 
 $ sudo systemctl restart sssd.service'
   impact 0.5
+  tag check_id: 'C-61873r1134928_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000068-GPOS-00036'
   tag gid: 'V-258132'

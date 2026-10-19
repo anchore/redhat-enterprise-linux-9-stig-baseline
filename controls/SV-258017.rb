@@ -31,8 +31,8 @@ $ sudo dconf update'
   tag fix_id: 'F-61682r926037_fix'
   tag satisfies: ['SRG-OS-000114-GPOS-00059', 'SRG-OS-000378-GPOS-00163', 'SRG-OS-000480-GPOS-00227']
   tag 'documentable'
-  tag cci: ['CCI-000366', 'CCI-000778', 'CCI-001958']
-  tag nist: ['CM-6 b', 'IA-3']
+  tag cci: ['CCI-000778', 'CCI-001958']
+  tag nist: ['IA-3']
   tag 'host'
 
   only_if('This requirement is Not Applicable in the container', impact: 0.0) {

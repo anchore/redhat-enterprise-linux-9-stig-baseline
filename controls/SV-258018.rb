@@ -20,6 +20,7 @@ Set AutomaticLoginEnable to false in the [daemon] section in /etc/gdm/custom.con
 [daemon]
 AutomaticLoginEnable=false'
   impact 0.7
+  tag check_id: 'C-61759r1045089_chk'
   tag severity: 'high'
   tag gtitle: 'SRG-OS-000480-GPOS-00229'
   tag gid: 'V-258018'

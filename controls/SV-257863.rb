@@ -23,6 +23,7 @@ Use the following command to apply the changes immediately without a reboot:
 
 $ sudo mount -o remount /dev/shm'
   impact 0.5
+  tag check_id: 'C-61604r1155631_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000368-GPOS-00154'
   tag gid: 'V-257863'

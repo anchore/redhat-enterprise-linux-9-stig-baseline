@@ -16,10 +16,11 @@ attributes.
     If AIDE is installed, ensure the "xattrs" rule is present on all
 uncommented file and directory selection lists.'
   impact 0.3
+  tag check_id: 'C-61880r1045275_chk'
   tag severity: 'low'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
   tag gid: 'V-258139'
-  tag rid: 'SV-258139r1045276_rule'
+  tag rid: 'SV-258139r1268251_rule'
   tag stig_id: 'RHEL-09-651035'
   tag fix_id: 'F-61804r926403_fix'
   tag cci: ['CCI-000366']

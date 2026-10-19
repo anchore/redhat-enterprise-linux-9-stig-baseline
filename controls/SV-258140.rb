@@ -14,14 +14,16 @@ If the "rsyslog" package is not installed, this is a finding.'
 
 $ sudo dnf install rsyslog'
   impact 0.5
+  tag check_id: 'C-61881r1106459_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000479-GPOS-00224'
+  tag satisfies: ['SRG-OS-000479-GPOS-00224', 'SRG-OS-000051-GPOS-00024', 'SRG-OS-000480-GPOS-00227']
   tag gid: 'V-258140'
   tag rid: 'SV-258140r1106460_rule'
   tag stig_id: 'RHEL-09-652010'
   tag fix_id: 'F-61805r1106358_fix'
-  tag cci: ['CCI-000366', 'CCI-000154', 'CCI-001851']
-  tag nist: ['CM-6 b', 'AU-6 (4)', 'AU-4 (1)']
+  tag cci: ['CCI-000154', 'CCI-001851']
+  tag nist: ['AU-6 (4)', 'AU-4 (1)']
   tag 'host'
 
   only_if('This control is Not Applicable to containers', impact: 0.0) {

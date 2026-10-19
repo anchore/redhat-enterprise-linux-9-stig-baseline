@@ -17,6 +17,7 @@ FirewallBackend=nftables
 
 Establish rate-limiting rules based on organization-defined types of DoS attacks on impacted network interfaces.'
   impact 0.5
+  tag check_id: 'C-61680r925802_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000420-GPOS-00186'
   tag gid: 'V-257939'

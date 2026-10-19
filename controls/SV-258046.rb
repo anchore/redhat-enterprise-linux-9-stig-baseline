@@ -1,46 +1,38 @@
 control 'SV-258046' do
   title 'RHEL 9 system accounts must not have an interactive login shell.'
   desc 'Ensuring shells are not given to system accounts upon login makes it more difficult for attackers to make use of system accounts.'
-  desc 'check', %q(Verify that system accounts must not have an interactive login shell with the following command:
+  desc 'check', %q(Verify that RHEL 9 system accounts do not have an interactive login shell.
 
-$ awk -F: '($3<1000){print $1 ":" $3 ":" $7}' /etc/passwd
+Run the following command to list any system account (UID < 1000) that has an interactive shell, excluding authorized system utility accounts (root, sync, shutdown, halt):
 
-root:0:/bin/bash
-bin:1:/sbin/nologin
-daemon:2:/sbin/nologin
-adm:3:/sbin/nologin
-lp:4:/sbin/nologin
+$ $ awk -F: '(($3 > 0 && $3 < 1000) && $1 !~ /^(halt|sync|shutdown)$/ && $7 !~ /(nologin|false)$/) {print $1 ":" $3 ":" $7}' /etc/passwd
 
-Identify the system accounts from this listing that do not have a nologin shell.
-
-If any system account (other than the root account) has a login shell and it is not documented with the information system security officer (ISSO), this is a finding.)
+If the command returns any output, this is a finding.)
   desc 'fix', 'Configure RHEL 9 so that all noninteractive accounts on the system do not have an interactive shell assigned to them.
 
 If the system account needs a shell assigned for mission operations, document the need with the information system security officer (ISSO).
 
 Run the following command to disable the interactive shell for a specific noninteractive user account:
 
-Replace <user> with the user that has a login shell.
-
-$ sudo usermod --shell /sbin/nologin <user>
-
-Do not perform the steps in this section on the root account. Doing so will cause the system to become inaccessible.'
+$ sudo usermod --shell /usr/sbin/nologin <user>'
   impact 0.5
-  tag check_id: 'C-61787r926123_chk'
+  tag check_id: 'C-61787r1262019_chk'
   tag severity: 'medium'
   tag gid: 'V-258046'
-  tag rid: 'SV-258046r991589_rule'
+  tag rid: 'SV-258046r1268251_rule'
   tag stig_id: 'RHEL-09-411035'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
-  tag fix_id: 'F-61711r926124_fix'
+  tag fix_id: 'F-61711r1262020_fix'
   tag 'documentable'
   tag cci: ['CCI-000366']
   tag nist: ['CM-6 b']
   tag 'host'
   tag 'container'
 
-  ignore_shells = input('non_interactive_shells').join('|')
-  non_interactive_shells = passwd.where { uid.to_i < 1000 && !shell.match(ignore_shells) }.users - input('exempt_interactive_system_accounts')
+  # DISA: system accounts (0 < UID < 1000) other than the halt, sync and shutdown utility accounts
+  # must have a shell ending in nologin or false
+  exempt_accounts = %w[halt sync shutdown] + input('exempt_interactive_system_accounts')
+  non_interactive_shells = passwd.where { uid.to_i.positive? && uid.to_i < 1000 && !exempt_accounts.include?(user) && !shell.to_s.match?(/(nologin|false)$/) }.users
 
   describe 'Non-interactive system accounts' do
     it 'should have non-interactive shells' do

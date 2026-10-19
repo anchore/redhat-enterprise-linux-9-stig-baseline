@@ -49,7 +49,7 @@ Using the steps listed in the Check Text, confirm the newly imported keys show a
   tag check_id: 'C-61560r925442_chk'
   tag severity: 'medium'
   tag gid: 'V-257819'
-  tag rid: 'SV-257819r1015075_rule'
+  tag rid: 'SV-257819r1268241_rule'
   tag stig_id: 'RHEL-09-214010'
   tag gtitle: 'SRG-OS-000366-GPOS-00153'
   tag fix_id: 'F-61484r925443_fix'

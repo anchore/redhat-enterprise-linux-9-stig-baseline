@@ -12,14 +12,16 @@ If the "sendmail" package is installed, this is a finding.'
 
 $ sudo dnf remove sendmail'
   impact 0.5
+  tag check_id: 'C-61568r1044891_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
+  tag satisfies: ['SRG-OS-000480-GPOS-00227', 'SRG-OS-000095-GPOS-00049']
   tag gid: 'V-257827'
-  tag rid: 'SV-257827r1044892_rule'
+  tag rid: 'SV-257827r1268251_rule'
   tag stig_id: 'RHEL-09-215020'
   tag fix_id: 'F-61492r925467_fix'
-  tag cci: ['CCI-000381', 'CCI-000366']
-  tag nist: ['CM-7 a', 'CM-6 b']
+  tag cci: ['CCI-000381']
+  tag nist: ['CM-7 a']
   tag 'host'
   tag 'container'
 

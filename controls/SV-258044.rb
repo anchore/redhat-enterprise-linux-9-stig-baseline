@@ -16,18 +16,19 @@ Note: The example is for a system that is configured to create users home direct
 
 $ sudo find /home -maxdepth 2 -type f -name ".[^.]*" -exec grep -iH -d skip --exclude=.bash_history umask {} \\;
 
-/home/wadea/.bash_history:grep -i umask /etc/bashrc /etc/csh.cshrc /etc/profile
-/home/wadea/.bash_history:grep -i umask /etc/login.defs
+/home/disauser/.bash_history:grep -i umask /etc/bashrc /etc/csh.cshrc /etc/profile
+/home/disauser/.bash_history:grep -i umask /etc/login.defs
 
 If any local interactive user initialization files are found to have a umask statement that sets a value less restrictive than "077", this is a finding.'
   desc 'fix', %q(Remove the umask statement from all local interactive user's initialization files.
 
 If the account is for an application, the requirement for a umask less restrictive than "077" can be documented with the information system security officer, but the user agreement for access to the account must specify that the local interactive user must log on to their account first and then switch the user to the application account with the correct option to gain the account's environment variables.)
   impact 0.5
+  tag check_id: 'C-61785r1184312_chk'
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'
   tag gid: 'V-258044'
-  tag rid: 'SV-258044r1045135_rule'
+  tag rid: 'SV-258044r1268251_rule'
   tag stig_id: 'RHEL-09-411025'
   tag fix_id: 'F-61709r926118_fix'
   tag cci: ['CCI-000366']
