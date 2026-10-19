@@ -28,6 +28,6 @@ Note: Any of the following are acceptable: "1", "true", or "yes" (keywords conta
   tag 'container'
 
   describe parse_config_file('/etc/dnf/dnf.conf') do
-    its('main.clean_requirements_on_remove') { should match(/1|True|yes/i) }
+    its('main.clean_requirements_on_remove') { should match(/\A(1|true|yes)\z/i) }
   end
 end

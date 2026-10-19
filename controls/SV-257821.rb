@@ -34,6 +34,6 @@ Note: Any of the following are acceptable: "1", "true", or "yes" (keywords conta
   tag 'container'
 
   describe parse_config_file('/etc/dnf/dnf.conf') do
-    its('main.localpkg_gpgcheck') { should match(/True|1|yes/i) }
+    its('main.localpkg_gpgcheck') { should match(/\A(1|true|yes)\z/i) }
   end
 end

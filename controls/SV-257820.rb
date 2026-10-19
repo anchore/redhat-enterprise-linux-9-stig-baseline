@@ -34,8 +34,7 @@ Note: Any of the following are acceptable: "1", "true", or "yes" (keywords conta
   tag 'host'
   tag 'container'
 
-  describe 'DNF configuration should enforce GPG signature checking' do
-    subject { parse_config_file('/etc/dnf/dnf.conf').params['main'] }
-    its('gpgcheck') { should cmp 1 }
+  describe parse_config_file('/etc/dnf/dnf.conf') do
+    its('main.gpgcheck') { should match(/\A(1|true|yes)\z/i) }
   end
 end

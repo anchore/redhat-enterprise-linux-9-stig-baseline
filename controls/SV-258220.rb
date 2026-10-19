@@ -36,13 +36,19 @@ $ sudo augenrules --load'
   }
 
   audit_command = '/etc/gshadow'
+  audit_archs = os.arch.match(/64/) ? ['b32', 'b64'] : ['b32']
 
   describe 'Command' do
-    it "#{audit_command} is audited properly" do
-      audit_rule = auditd.file(audit_command)
-      expect(audit_rule).to exist
-      expect(audit_rule.permissions.flatten).to include('w', 'a')
-      expect(audit_rule.key.uniq).to include(input('audit_rule_keynames').merge(input('audit_rule_keynames_overrides'))[audit_command])
+    audit_archs.each do |audit_arch|
+      it "#{audit_command} is audited properly for #{audit_arch}" do
+        # syscall rules on -F path= only; a bare -w watch (no fields) does not satisfy the requirement
+        audit_rule = auditd.file(audit_command).where { Array(fields).include?("arch=#{audit_arch}") }
+        expect(audit_rule).to exist
+        expect(audit_rule.action.uniq).to cmp 'always'
+        expect(audit_rule.list.uniq).to cmp 'exit'
+        expect(audit_rule.permissions.flatten).to include('w', 'a')
+        expect(audit_rule.key.uniq).to include(input('audit_rule_keynames').merge(input('audit_rule_keynames_overrides'))[audit_command])
+      end
     end
   end
 end

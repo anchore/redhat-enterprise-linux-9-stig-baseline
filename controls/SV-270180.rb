@@ -54,13 +54,15 @@ permissive = 0'
   tag cci: ['CCI-001764']
   tag nist: ['CM-7 (2)']
 
-  describe file('/etc/fapolicyd/fapolicyd.conf') do
-    its('content') { should include 'permissive = 0' }
+  describe parse_config_file('/etc/fapolicyd/fapolicyd.conf') do
+    its('permissive') { should cmp 0 }
   end
 
-  describe file('/etc/fapolicyd/compiled.rules') do
-    its('content') { should include 'allow exe=/usr/bin/python3.7 : ftype=text/x-python' }
-    its('content') { should include 'deny_audit perm=any pattern=ld_so : all' }
-    its('content') { should include 'deny perm=any all : all' }
+  # The last active rule must deny everything (deny, deny_log or deny_audit)
+  rules = file('/etc/fapolicyd/compiled.rules').content.to_s.lines.map(&:strip).reject { |l| l.empty? || l.start_with?('#') }
+
+  describe 'The last fapolicyd rule in /etc/fapolicyd/compiled.rules' do
+    subject { rules.last.to_s }
+    it { should match(/^deny(_log|_audit)?\s+perm=any\s+all\s*:\s*all$/) }
   end
 end

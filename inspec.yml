@@ -312,7 +312,7 @@ inputs:
     value:
       - root
 
-  # SV-257843, SV-257889, SV-258046, SV-258048, SV-258050, SV-258051
+  # SV-257843, SV-257889, SV-258048, SV-258050, SV-258051
   - name: non_interactive_shells
     description: These shells do not allow a user to login
     type: Array

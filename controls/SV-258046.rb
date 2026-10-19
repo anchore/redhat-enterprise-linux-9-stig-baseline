@@ -29,8 +29,10 @@ $ sudo usermod --shell /usr/sbin/nologin <user>'
   tag 'host'
   tag 'container'
 
-  ignore_shells = input('non_interactive_shells').join('|')
-  non_interactive_shells = passwd.where { uid.to_i < 1000 && !shell.match(ignore_shells) }.users - input('exempt_interactive_system_accounts')
+  # DISA: system accounts (0 < UID < 1000) other than the halt, sync and shutdown utility accounts
+  # must have a shell ending in nologin or false
+  exempt_accounts = %w[halt sync shutdown] + input('exempt_interactive_system_accounts')
+  non_interactive_shells = passwd.where { uid.to_i.positive? && uid.to_i < 1000 && !exempt_accounts.include?(user) && !shell.to_s.match?(/(nologin|false)$/) }.users
 
   describe 'Non-interactive system accounts' do
     it 'should have non-interactive shells' do

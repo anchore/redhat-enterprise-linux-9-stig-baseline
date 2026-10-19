@@ -41,10 +41,10 @@ Remove any duplicate definitions.'
   setting_value = sudoers(input('sudoers_config_files')).settings.Defaults[setting]
 
   describe 'Sudoers configuration' do
-    it "should should set #{setting} to a non-negative number, exactly once" do
+    it "should set #{setting} to 0, exactly once" do
       expect(setting_value).to_not be_nil, "#{setting} not found inside sudoers config file(s)"
       expect(setting_value.count).to eq(1), "#{setting} set #{setting_value.count} times inside sudoers config file(s)"
-      expect(setting_value.first.to_i).to be >= 0
+      expect(Float(setting_value.first.to_s.strip, exception: false)).to eq(0), "#{setting} is set to '#{setting_value.first}', expected '0'"
     end
   end
 end

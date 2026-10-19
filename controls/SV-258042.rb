@@ -26,7 +26,9 @@ $ sudo passwd -x 180 [user]'
 
   value = input('pass_max_days')
 
-  bad_users = users.where { uid >= 1000 }.where { value > 60 or maxdays.negative? }.usernames
+  # chage reports an unset maximum as -1 (left as a String by InSpec), so compare as integers;
+  # nobody (65534) is a system account
+  bad_users = users.where { uid >= 1000 && uid != 65_534 }.where { !maxdays.nil? && (maxdays.to_i > value || maxdays.to_i <= 0) }.usernames
   in_scope_users = bad_users - input('exempt_home_users')
 
   describe 'Users are not be able' do

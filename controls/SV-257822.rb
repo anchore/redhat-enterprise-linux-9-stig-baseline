@@ -43,7 +43,7 @@ Note: Any of the following are acceptable: "1", "true", or "yes" (keywords conta
     repos = repo_def_files.map { |file| parse_config_file(file).params }.inject(&:merge)
 
     # check big hash for repos that fail the test condition
-    failing_repos = repos.keys.reject { |repo_name| repos[repo_name]['gpgcheck'] == '1' }
+    failing_repos = repos.keys.reject { |repo_name| repos[repo_name]['gpgcheck'].to_s.match?(/\A(1|true|yes)\z/i) }
 
     describe 'All repositories' do
       it 'should be configured to verify digital signatures' do

@@ -41,29 +41,26 @@ Confirm password:'
     !virtualization.container_system?
   end
 
-  grubfile = input('grub_conf_path')
   grub_userfile = input('grub_user_conf_path')
+  legacy_grub_userfile = '/boot/efi/EFI/redhat/user.cfg'
 
-  describe file(grubfile) do
+  # Upgraded systems may still keep the legacy user.cfg on the EFI partition
+  userfile = file(grub_userfile).exist? || !file(legacy_grub_userfile).exist? ? grub_userfile : legacy_grub_userfile
+
+  describe file(userfile) do
     it { should exist }
   end
 
-  describe file(grub_userfile) do
-    it { should exist }
-  end
+  if file(userfile).exist?
+    password_lines = file(userfile).content.to_s.lines.map(&:strip).grep(/^GRUB2_PASSWORD\s*=/i)
 
-  if file(grubfile).exist? && file(grub_userfile).exist?
-    password_set = file(grubfile).content.lines.select { |line| line.match(/password_pbkdf2\s+\w+\s+\$\{\w+\}/) }
-
-    describe 'The GRUB bootloader superuser password' do
-      it "should be set in the GRUB config file ('#{grubfile}')" do
-        expect(password_set).to_not be_empty, "No bootloader superuser password set in '#{grubfile}'"
+    describe "The GRUB bootloader superuser password in '#{userfile}'" do
+      it 'should be set (GRUB2_PASSWORD, uncommented)' do
+        expect(password_lines).to_not be_empty, "No uncommented GRUB2_PASSWORD entry found in '#{userfile}'"
       end
-
-      grub_envar = password_set.first.match(/\$\{(?<grub_pw_envar>\w+)\}/).captures.first
-      password_encrypted = file(grub_userfile).content.match?(/#{grub_envar}=grub.pbkdf2/)
-      it "should be encrypted in the user config file ('#{grub_userfile}')" do
-        expect(password_encrypted).to eq(true), "GRUB password environment variable not set to an encrypted value in '#{grub_userfile}'"
+      it 'should be a grub.pbkdf2.sha512 hash' do
+        bad_lines = password_lines.grep_v(/^GRUB2_PASSWORD\s*=\s*grub\.pbkdf2\.sha512/i)
+        expect(bad_lines).to be_empty, "GRUB2_PASSWORD entries not beginning with 'grub.pbkdf2.sha512':\n\t- #{bad_lines.join("\n\t- ")}"
       end
     end
   end

@@ -34,8 +34,8 @@ If this check fails on an installed system, it is a permanent finding until the 
       skip 'This control is Not Applicable as FIPS is not required for this system'
     end
   else
-    describe command('fips-mode-setup --check') do
-      its('stdout.strip') { should match(/FIPS mode is enabled/) }
+    describe file('/proc/sys/crypto/fips_enabled') do
+      its('content.to_s.strip') { should cmp '1' }
     end
   end
 end

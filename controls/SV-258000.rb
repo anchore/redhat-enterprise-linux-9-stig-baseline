@@ -36,12 +36,12 @@ $ sudo systemctl restart sshd.service'
     !(virtualization.container_system? && !directory('/etc/ssh').exist?)
   }
 
-  ssh_host_key_dirs = input('ssh_host_key_dirs').join(' ')
-  priv_keys = command("find #{ssh_host_key_dirs} -xdev -name '*.pem'").stdout.split("\n")
+  # Private host keys are /etc/ssh/*_key (public keys are *_key.pub)
+  priv_keys = command("find /etc/ssh -maxdepth 1 -type f -name '*_key'").stdout.split("\n")
   mode = input('ssh_private_key_mode')
   failing_keys = priv_keys.select { |key| file(key).more_permissive_than?(mode) }
 
-  describe 'All SSH private keys on the filesystem' do
+  describe 'All SSH private host key files' do
     it "should be less permissive than #{mode}" do
       expect(failing_keys).to be_empty, "Failing keyfiles:\n\t- #{failing_keys.join("\n\t- ")}"
     end

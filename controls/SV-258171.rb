@@ -41,7 +41,7 @@ $ sudo chmod 0600 /etc/audit/auditd.conf'
     !virtualization.container_system?
   }
 
-  rules_files = bash('ls -d /etc/audit/rules.d/*.rules').stdout.strip.split.append('/etc/audit/auditd.conf')
+  rules_files = bash('ls -d /etc/audit/rules.d/*.rules').stdout.strip.split.append('/etc/audit/audit.rules', '/etc/audit/auditd.conf')
 
   audit_conf_mode = input('audit_conf_mode')
   failing_files = rules_files.select { |rf| file(rf).more_permissive_than?(audit_conf_mode) }

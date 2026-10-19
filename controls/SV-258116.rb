@@ -30,6 +30,10 @@ crypt_style = sha512'
   tag 'host'
   tag 'container'
 
+  only_if('This requirement is Not Applicable when the libuser package is not installed', impact: 0.0) {
+    package('libuser').installed?
+  }
+
   describe parse_config_file('/etc/libuser.conf') do
     its('defaults.crypt_style') { should cmp 'sha512' }
   end

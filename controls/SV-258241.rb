@@ -52,7 +52,7 @@ Note: Systemwide crypto-policies are applied on application startup. It is recom
   }
 
   describe command('update-crypto-policies --show') do
-    its('stdout') { should match(/FIPS/) }
+    its('stdout.strip') { should eq 'FIPS' }
   end
 
   describe parse_config_file('/etc/crypto-policies/state/CURRENT.pol') do

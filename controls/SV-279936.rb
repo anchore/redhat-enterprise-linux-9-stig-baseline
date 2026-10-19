@@ -39,15 +39,28 @@ $ sudo augenrules --load'
     !virtualization.container_system?
   }
 
-  audit_paths = ['/etc/cron.d', '/var/spool/cron']
+  audit_subj_type = 'crond_t'
+  audit_archs = os.arch.match(/64/) ? ['b32', 'b64'] : ['b32']
+  audit_key = input('audit_rule_keynames').merge(input('audit_rule_keynames_overrides'))[audit_subj_type]
 
-  describe 'Cron directories auditing' do
-    audit_paths.each do |audit_path|
-      it "#{audit_path} is audited properly" do
-        audit_rule = auditd.file(audit_path)
+  describe 'Cron execution auditing' do
+    audit_archs.each do |audit_arch|
+      cron_rules = auditd.syscall('execve').where { arch == audit_arch && Array(fields).include?("subj_type=#{audit_subj_type}") }
+
+      it "execve by #{audit_subj_type} as root (euid=0) is audited for #{audit_arch}" do
+        audit_rule = cron_rules.where { fields.include?('euid=0') }
         expect(audit_rule).to exist
-        expect(audit_rule.permissions.flatten).to include('w', 'a')
-        expect(audit_rule.key.uniq).to include(input('audit_rule_keynames').merge(input('audit_rule_keynames_overrides'))[audit_path])
+        expect(audit_rule.action.uniq).to cmp 'always'
+        expect(audit_rule.list.uniq).to cmp 'exit'
+        expect(audit_rule.key.uniq).to include(audit_key)
+      end
+
+      it "execve by #{audit_subj_type} as a privileged user (auid>=1000, auid!=unset) is audited for #{audit_arch}" do
+        audit_rule = cron_rules.where { fields.include?('auid>=1000') && !(fields & ['auid!=unset', 'auid!=-1', 'auid!=4294967295']).empty? }
+        expect(audit_rule).to exist
+        expect(audit_rule.action.uniq).to cmp 'always'
+        expect(audit_rule.list.uniq).to cmp 'exit'
+        expect(audit_rule.key.uniq).to include(audit_key)
       end
     end
   end
